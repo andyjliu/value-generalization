@@ -1,0 +1,187 @@
+# 66-tenet SFT grid on Olmo-3 32B (dense), init = the RAW base
+# (allenai/Olmo-3-1125-32B @ c2b61dae). Rows = all 66 tenets, in the 7B/8B
+# full66 row order (= the 66-value eval column order), so the matrix is square
+# and lines up row for row with the small-model SFT matrices. The 49-tenet DPO
+# pool is a subset of these rows.
+#
+# The released matrices were produced as two runs of this recipe -- the 49-tenet
+# DPO pool, then the remaining 17 tenets -- and combined: each tenet trains from
+# the same raw base on its own dataset with the same hyperparameters and seed,
+# and every arm is scored on the same first-turn cache, URIAL base and judge, so
+# the split changed only wave order. Running this config as written reproduces
+# the same grid in one job.
+#
+# ── Scale-up of the single-value grid ──────────────────────────────────────
+# Same tenets, same imported per-tenet data, same hyperparameters and same
+# ConflictScope eval as const_v3_sft_full66_olmo3.yaml (OLMo-3 7B); read that file's header
+# for data/label provenance.
+# Deliberate differences from the 7B/8B run, all forced by model size:
+#   * sharding: FSDP2 + wrapper-level activation checkpointing
+#     (configs/fsdp/fsdp2_olmo3.json, wraps Olmo3DecoderLayer) -- the config the
+#     30B/32B neutral-SFT runs were measured on. lr, batch
+#     (2 x 8 ranks x accum 1), epochs, max_length 2048, val_fraction 0 are unchanged.
+#   * chat format: explicit `train.chat_format: olmo3_chatml` (template
+#     sha256-identical to the HF neutral-SFT repo's chat_template.jinja).
+#   * schedule: waves of 8 + delete_exports (a bf16 export is ~65 GB; see
+#     "Storage" below).
+#
+# ── Path spelling is load-bearing (eval-time formatting) ───────────────────
+# `gt` evals load the candidate in-process through the conflictscope fork,
+# which formats by path substring: only the HYPHENATED `olmo-3` selects
+# ChatML; `olmo3`/`olmo` fall through to the OLMo-2 tulu format. The HF repo
+# name (`...-olmo3-32b`) has no hyphen, so the base is referenced through a
+# local dir whose name carries `olmo-3`, and the mtag carries it too so every
+# merged dir `{iid}_<mtag>_{tenet}_merged` hits the ChatML branch.
+# TRAINING does not rely on this: this branch has no `olmo-3` chat family, so
+# train.chat_format pins olmo3_chatml explicitly and `gt run` forwards it to
+# the export (--chat-format + --verify; interventions.train_stages).
+#
+# ── Storage ─────────────────────────────────────────────────────────────────
+# The training task prunes the fp32 trainer save (~125 GB) as soon as its
+# export verifies (schedule.prune_trainer_save, on by default with
+# delete_exports), so a trained tenet holds only its ~65 GB bf16 export until
+# the wave's evals finish. Free space a wave of W needs, init excluded:
+# ~65*W + 130 GB with one training at a time, ~65*W + 260 GB with two (the
+# cluster throttle, max_concurrent_gpus 16): the in-flight fp32 save and the
+# export being written coexist. Size schedule.wave to the free quota.
+#
+# ── Before launch ───────────────────────────────────────────────────────────
+#   1. init weights: the pinned base revision is downloaded from HF.
+#   2. datasets + first-turn cache (the 66 tenets' rows of the HF SFT set):
+#        .venvs/core/bin/python scripts/prepare_sft_data.py \
+#            -c configs/experiments/ground_truth/const_v3_sft_full66_olmo3_32b.yaml
+#   3. the conflictscope fork's gpus_needed() reads
+#      CONFLICTSCOPE_GPU_MEMORY_GB (export it in the shell or controller
+#      that launches the run, e.g. 256; sbatch passes it on to the jobs), so
+#      a 30b/32b candidate loads at tp=1 on one large GPU.
+#   4. URIAL denominator: `evaluation.scaffolds` routes the base task alone
+#      through the fork's --assistant-scaffold; its shared CSV is
+#      `<model>_urial0_base.csv`. Check the base task's log for "Scaffold
+#      prompt (first item, head)" in the pilot.
+#
+# Launch (--no-wait is refused with schedule.wave):
+#   valuegen gt run -c configs/experiments/ground_truth/const_v3_sft_full66_olmo3_32b.yaml --stop-after-wave 1   # pilot pass; rerun without the flag for the rest
+#
+# HASHED BLOCK WARNING: intervention.* hashes into the intervention id; gt_id
+# hashes evaluation on top. `schedule` is controller pacing only (not hashed).
+
+name: const_v3_sft_full66_olmo3_32b
+
+# Controller pacing (not hashed). Full run (wave: 8): train 8, eval, delete exports + trainer
+# weights, repeat -> 9 waves (8x8 + 2). The base row rides in the last scheduled wave's eval.
+schedule:
+  # A pilot pass is `--stop-after-wave 1` (wave 0, base eval included); rerun
+  # without the flag and the run carries on from wave 1.
+  wave: 8
+  delete_exports: true
+
+intervention:
+  method: model_spec_aft
+  value_set: constitution_tenets_v3
+  # Order = matrix row order = the 7B/8B full66 order (hashed).
+  values:
+    [hard_constraint_fidelity, honest_creative_feedback, correcting_counterproductive_advice,
+     resisting_crowd_agreement, calibrated_uncertainty, accurate_overall_impressions,
+     respecting_rational_agency, balanced_ethical_perspectives, disagreeing_with_experts,
+     honest_uncomfortable_truths, performative_advocacy, transparent_withholding,
+     substantive_medical_guidance, substantive_legal_help, context_sensitive_help,
+     scope_limited_code_fixes, plausible_interpretation, proactive_issue_identification,
+     respecting_user_autonomy, discourage_excessive_reliance, avoid_unlikely_harm_refusals,
+     no_wishy_washy_responses, transparent_limitations, dont_assume_malicious_intent,
+     calibrated_caveats, non_condescending_engagement, constructive_hypothetical_engagement,
+     dark_fiction_engagement, no_preachy_tone, no_unnecessary_padding, political_reticence,
+     personal_autonomy_risky_choices, harm_reduction_guidance,
+     current_guidance_over_extrapolation, weighting_recoverability, novel_situation_caution,
+     preserving_checks_balances, power_legitimacy, fostering_independent_judgment,
+     political_factual_accuracy, steelman_multiple_views, neutral_terminology,
+     empowering_reasoning, equanimity_under_existential_challenges,
+     metaphysical_uncertainty_commitment, true_self_integrity, mature_error_handling,
+     examining_human_existential_frames, conscientious_non_sabotage, conventional_compliance,
+     upfront_concerns, adjusting_for_minors, embedded_instruction_boundary,
+     source_quality_calibration, care_for_non_principals, avoiding_overclarification,
+     transparency_about_nature, avoid_self_destructive_enabling, mental_health_awareness,
+     addressing_underlying_distress, non_amplifying_emotional_validation,
+     direct_crisis_response, substantive_professional_guidance, answering_within_frameworks,
+     user_default_adjustment, user_activated_communication]
+
+  models:
+    olmo-3_32b_base: allenai/Olmo-3-1125-32B
+  algo: sft
+  wandb_project: valuegen
+
+  # INERT (data imported from HF; nothing generated). Hashed -- keep stable.
+  generation:
+    n_samples: 5000
+    questions_per_domain: 50
+    model_id: Qwen/Qwen3.6-27B
+    serve: local
+    serve_env: eval_api
+    gpus: 8
+    mem: 96G
+    time: "2-00:00:00"
+    max_concurrent: 30
+    disable_thinking: true
+    generate: {time: "1-12:00:00", mem: 16G}
+
+  train:
+    chat_format: olmo3_chatml
+    model_revision: c2b61dae89a1ad10e4ad5653d0e46b590902607b
+    learning_rate: 1.0e-5
+    lr_scheduler_type: cosine
+    warmup_steps: 0.1
+    num_train_epochs: 1
+    val_fraction: 0.0
+    max_length: 2048
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1
+    per_device_eval_batch_size: 1
+    gradient_checkpointing: false   # wrapper-level, via fsdp_config
+    eval_strategy: "no"
+    use_peft: false
+    attn_implementation: sdpa       # no flash_attn on the ROCm venv
+    save_strategy: "no"
+    save_only_model: false   # SHARDED_STATE_DICT + save_only_model=true is rejected by Trainer.__init__; save_strategy=no so no disk impact
+    save_total_limit: 1
+    dtype: float32
+    bf16: true
+    fsdp: true
+    fsdp_config: configs/fsdp/fsdp2_olmo3.json
+    report_to: none
+    logging_steps: 10
+    seed: 42
+    ddp_timeout: 10800
+  resources:
+    # 313 steps at the measured 2.5-2.8 s/step -> ~15 min + ~6 min load/export.
+    train: {time: "03:00:00", mem: 0, gpus: 8, nproc: 8}
+
+evaluation:
+  # Judge/env block = the AMD-cluster form; scenarios, temperature and
+  # max_tokens are the full49/full66 values.
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  temperature: 1.0
+  max_tokens: 2048
+  judge:
+    model: Qwen/Qwen3.6-27B
+    serve: local
+    gpus: 8
+    mem: 400G
+    env: eval_api
+    enable_prefix_caching: false
+    serve_args:
+      - "--gdn-prefill-backend triton"
+      - "--disable-custom-all-reduce"
+      - "--compilation-config '{\"pass_config\": {\"fuse_allreduce_rms\": false}}'"
+  # 12 h = the walltime cap of the cluster these ran on. One packed node runs 8 candidates.
+  resources: {env: eval_api, time: "12:00:00", mem: 64G, gpus: 1}
+  # Denominator = the raw base under the URIAL zero-shot scaffold, as in the
+  # 7B/8B SFT runs. Applies to the base slot only; the trained checkpoints
+  # keep the chat template they learned.
+  scaffolds:
+    olmo-3_32b_base: urial0
+  matrices:
+    variants: [likert_normalized, choice_normalized, likert_raw, choice_raw]
+    cols: all

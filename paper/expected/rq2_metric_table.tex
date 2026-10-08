@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Robustness metric & Spearman $\rho$ & \persona & \sentence \\
+& to ours & coherence & coherence \\
+\midrule
+\textbf{Ours} & --- & $0.43$ ($p < 0.001$) & $0.12$ ($p = 0.37$) \\
+Prefill adherence \citep{oct} & $0.90$ & $0.58$ ($p < 0.001$) & $0.14$ ($p = 0.28$) \\
+Paired defend rate \citep{sturgeon2026roleplaying} & $0.75$ & $0.62$ ($p < 0.001$) & $0.10$ ($p = 0.43$) \\
+\bottomrule
+\end{tabular}
+\caption{Spearman $\rho$ between three different ways to operationalize prefill robustness, as well as the \Cref{fig:prefill-results} correlation result computed under all three robustness metrics. Our metric is highly correlated with metrics adapted from those used in previous work, and the coherence-robustness relationship holds across all choices of metric.}
+\label{tab:rq2_metrics}
+\end{table}

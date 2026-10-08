@@ -1,0 +1,67 @@
+# Multivalue random-subset DPO (the paper's RQ2; `rq3_` is the project's earlier
+# numbering, kept for the released artifact IDs): the TRL train block
+# for every one of the 18 arms (16 six-value subsets + uniform49 +
+# balanced_clusters), 12,000 pairs each from the Qwen3-8B neutral SFT.
+#
+# NOT a valuegen `gt` experiment config: `valuegen mv train` (via
+# configs/experiments/multivalue/*.yaml `train.recipe`) passes this file verbatim as
+# `--config` to `python -m valuegen.ground_truth.training dpo`
+# (TrlParser((PairScriptArguments, DPOConfig, ModelConfig))). Per-run fields
+# (dataset, base model, output dir, run name) ride as CLI overrides.
+#
+# Same recipe as the single-value const_v3_dpo_full49 run, with the Qwen3-8B
+# pieces spelled out: qwen_chatml chat format and a Qwen3DecoderLayer FSDP
+# wrap (configs/fsdp/qwen3_full_shard.json, with FSDP activation
+# checkpointing because max_length is 2048 here, not TRL's implicit 1024). 12,000 pairs at effective batch 16 -> 750 steps / 75 warmup.
+
+chat_format: qwen_chatml
+learning_rate: 5.0e-06
+lr_scheduler_type: cosine
+warmup_steps: 0.1  # fraction of total steps, as in the single-value recipe
+num_train_epochs: 1
+val_fraction: 0.0
+beta: 0.1
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 1
+per_device_eval_batch_size: 1
+# 8 ranks -> effective batch 16 -> exactly 750 steps over 12,000 pairs.
+gradient_checkpointing: false
+eval_strategy: 'no'
+remove_unused_columns: false
+use_peft: false
+save_strategy: 'no'
+save_only_model: true
+save_total_limit: 1
+dtype: float32
+bf16: true
+fsdp: full_shard auto_wrap
+fsdp_config: configs/fsdp/qwen3_full_shard.json
+report_to: none
+logging_steps: 10
+seed: 42
+# Explicit pins for the supplied recipe's TRL defaults, plus requested length.
+loss_type: sigmoid
+max_length: 2048
+truncation_mode: keep_start
+optim: adamw_torch_fused
+weight_decay: 0.0
+max_grad_norm: 1.0
+label_smoothing: 0.0
+precompute_ref_log_probs: false
+max_steps: -1
+# Launch gates evaluated inside the trainer (PairScriptArguments): the run
+# aborts before the first optimizer step if any of these is violated.
+# launch.py overrides expect_train_rows per run with the audited post-drop
+# count (train.accept_trl_prompt_drops).
+expect_raw_rows: 12000
+expect_train_rows: 12000
+# `valuegen mv data` gate: accept TRL's prompt-fills-max_length drops (the RQ3
+# drivers accepted them via config.yaml train.accept_trl_prompt_drops; the
+# multivalue package reads the recipe). Also a declared trainer field (no-op).
+accept_trl_prompt_drops: true
+expect_max_steps: 750
+expect_warmup_steps: 75
+expect_world_size: 8
+check_reference_frozen: true
+dump_first_batch: true
+disable_tqdm: true

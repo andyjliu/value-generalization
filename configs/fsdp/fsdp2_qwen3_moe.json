@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "auto_wrap_policy": "TRANSFORMER_BASED_WRAP",
+  "transformer_layer_cls_to_wrap": ["Qwen3MoeDecoderLayer"],
+  "reshard_after_forward": true,
+  "activation_checkpointing": true,
+  "cpu_offload": false,
+  "cpu_ram_efficient_loading": true,
+  "state_dict_type": "SHARDED_STATE_DICT"
+}

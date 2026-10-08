@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "valuegen"
+version = "0.1.0"
+description = "Ground-truth measurement and prediction of value generalization in LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "numpy>=2",
+    "pandas>=2.2",
+    "scipy>=1.15",
+    "scikit-learn>=1.6",
+    "pyyaml>=6.0",
+    "tqdm>=4.67",
+    "openai>=3.1",
+    "anthropic>=0.45",
+    "google-genai>=1.0",
+    "sentence-transformers>=3.4",
+    "transformers>=5.0,<6",  # forks pass torch_dtype=, removed in 6.x
+    "torch>=2.9",
+    "trl>=1.0",
+    "peft>=0.15",
+    "accelerate>=1.0",
+    "datasets>=3.3",
+    "inspect-ai==0.3.263",
+    "ortools>=9.10",
+    # +cu129 wheel: the PyPI build is cu130, which fails CUDA init on CUDA-12 drivers
+    "vllm @ https://github.com/vllm-project/vllm/releases/download/v0.25.0/vllm-0.25.0%2Bcu129-cp38-abi3-manylinux_2_28_x86_64.whl",
+    "prometheus-fastapi-instrumentator>=8.0.2",  # 7.x breaks vllm serve under starlette 1.x
+    "matplotlib>=3.10",
+    "seaborn>=0.13",
+    "statsmodels>=0.14",
+    "networkx>=3.4",
+    "choix>=0.3.6",
+    "wandb>=0.19",
+    "kmedoids>=0.5.5",
+    "fire>=0.7",
+    "backoff>=2.2",
+    "pydantic>=2",
+    "safetensors>=0.4",
+    "huggingface-hub>=0.30",
+]
+
+[project.optional-dependencies]
+deepspeed = [
+    "deepspeed>=0.16",
+]
+
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+]
+
+[project.scripts]
+valuegen = "valuegen.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.uv.pip]
+extra-index-url = ["https://download.pytorch.org/whl/cu128"]
+index-strategy = "unsafe-best-match"  # the PyTorch index carries stale copies of shared deps
+# Installs also need `--overrides requirements/overrides.txt` (see setup_env.sh).
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "e2e: real GPU pipeline (skipped without a GPU) and external integration sweeps",
+    "model_smoke: real Qwen3-0.6B CPU training, resume and merge checks",
+    "fork_suite: external fork tests run in isolated subprocesses",
+]

@@ -1,0 +1,184 @@
+# Final DPO pool: 49 tenet-specific DPO sets of exactly 4,000 pairs each, ONE
+# PAIR PER PROMPT across all tenets, drawn from all 8 labeled pools (196,000
+# rows). The 49 are the tenets that all saturate at cap 4000 under the
+# one-pair-per-prompt flow; the other 17 tenets of constitution_tenets_v3
+# cannot reach 4,000 rows and are dropped.
+#
+# ── Labels ─────────────────────────────────────────────────────────────────
+# Every pair is judged by the Qwen3.6-27B oracle (labels.oracle below) with
+# label_subset's built-in labeler. Sources: the HF preference sets (pku_train,
+# hh_train, ultrafeedback_train, helpsteer2_train) and the Community
+# Alignment / WildFeedback pools built by scripts/build_ca_wf_pools.py
+# (community_alignment_en, wildfeedback_st) and scripts/build_ca_wf_mt_pools.py
+# (ca_en_mt_p1, wf_mt; ca_en_mt_p2 is excluded: it only adds pairs for prompts
+# p1 already covers, i.e. nothing under one pair per prompt). Labels built in
+# separate stores with an otherwise identical oracle block can be linked into
+# this config's store with `python -m valuegen.ground_truth.label_subset
+# import -c <this config> --from <label id> ...`. Source order matters:
+# (prompt,{A,B}) triple duplicates keep the FIRST occurrence in this order.
+#
+# ── Data: one pair per prompt, tau-weighted min-cost flow ──────────────────
+# `assignment` = min-cost flow with a prompt layer (assignment.unit: prompt):
+# source -> prompt (cap 1) -> row -> tenet (cap 4000) -> sink, cost -|score|
+# on eligible (|score| >= 0.5) edges. Every tenet gets exactly 4,000 rows, no
+# prompt text feeds two rows anywhere, total |score| maximal (mean |score|
+# 0.85). Rows of one conversation at different turn depths are different
+# prompts and may land in different tenets (15% of conversations / 41% of
+# rows do).
+#
+#   .venvs/core/bin/python -m valuegen.ground_truth.label_subset datasets \
+#       -c configs/experiments/ground_truth/const_v3_dpo_full49.yaml
+#
+# The resulting datasets are released on HF as
+# value-generalization/constitution-v3-dpo; scripts/prepare_dpo_data.py writes
+# them into this config's datasets/ dir without relabeling.
+#
+# ── Init / recipe / eval ───────────────────────────────────────────────────
+# neutral_qwen3_8b (the neutral SFT), full-FT DPO lr 5e-6:
+#   * ONE epoch, and the whole 4k set is trained on -- `val_fraction: 0`
+#     drops the trainer's historical 90/10 seeded split, eval_strategy "no".
+#   * ConflictScope eval at temperature 1.0 / max_tokens 2048. Both keys must
+#     be set for the cap to take effect (the fork otherwise falls back to
+#     1024 tokens). The spliced first-turn cache.json must be seeded into
+#     both the shared base_evals/conflictscope-* store and this run's
+#     model_evals/ before any eval task starts.
+# Caveat: no_unnecessary_padding trains degenerate (84% empty generations in
+# a pilot) -- it is in the 49 but consider excluding it from analysis.
+#
+# HASHED BLOCK WARNING: intervention.* (labels, assignment, train, resources)
+# hashes into the intervention id; gt_id hashes evaluation on top.
+
+name: const_v3_dpo_full49
+
+# Controller pacing only (NOT hashed; see config._resolve_schedule): `gt run`
+# trains 8 tenets (manifest order = the values list below), evals those 8,
+# releases the judge, trains the next 8, ... -> 7 waves (6x8 + 1). First
+# matrices-worth of signal after ~1 wave instead of after all 49 trainings.
+# The base row (neutral_qwen3_8b denominator under THIS eval identity) is not
+# in any store yet, so it rides in the LAST wave's eval; wave-0 raw scores are
+# readable before it, normalized matrices only after.
+schedule:
+  wave: 8
+
+intervention:
+  method: label_subset
+  value_set: constitution_tenets_v3
+  # The 49 tenets (values == assignment.pool), sorted by id.
+  values: &pool49
+    [correcting_counterproductive_advice, resisting_crowd_agreement, calibrated_uncertainty,
+     accurate_overall_impressions, respecting_rational_agency, disagreeing_with_experts,
+     honest_uncomfortable_truths, transparent_withholding, substantive_medical_guidance,
+     substantive_legal_help, context_sensitive_help, scope_limited_code_fixes,
+     plausible_interpretation, respecting_user_autonomy, discourage_excessive_reliance,
+     avoid_unlikely_harm_refusals, no_wishy_washy_responses, transparent_limitations,
+     dont_assume_malicious_intent, calibrated_caveats, non_condescending_engagement,
+     constructive_hypothetical_engagement, no_preachy_tone, no_unnecessary_padding,
+     political_reticence, personal_autonomy_risky_choices, harm_reduction_guidance,
+     current_guidance_over_extrapolation, weighting_recoverability, novel_situation_caution,
+     power_legitimacy, fostering_independent_judgment, political_factual_accuracy,
+     neutral_terminology, empowering_reasoning, conscientious_non_sabotage,
+     conventional_compliance, upfront_concerns, adjusting_for_minors,
+     embedded_instruction_boundary, source_quality_calibration, care_for_non_principals,
+     avoiding_overclarification, transparency_about_nature, avoid_self_destructive_enabling,
+     non_amplifying_emotional_validation, substantive_professional_guidance,
+     answering_within_frameworks, user_activated_communication]
+
+  assignment:
+    rule: mincost_flow
+    unit: prompt
+    cap: 4000
+    seed: 42
+    pool: *pool49
+
+  labels:
+    tau: 0.5
+    seed: 42
+    # All 8 pools are train pools; the held-out test splits (pku, hh,
+    # ultrafeedback_test, helpsteer2_val) are not part of this store.
+    sources: [pku_train, hh_train, ultrafeedback_train, helpsteer2_train,
+              community_alignment_en, wildfeedback_st, ca_en_mt_p1, wf_mt]
+    oracle:
+      model: Qwen/Qwen3.6-27B
+      serve: local
+      gpus: 8
+      mem: 96G
+      env: eval_api
+      enable_prefix_caching: false
+      max_num_batched_tokens: 16384
+      max_num_seqs: 128
+      serve_args:
+        - "--gdn-prefill-backend triton"
+        - "--disable-custom-all-reduce"
+        - "--compilation-config '{\"pass_config\": {\"fuse_allreduce_rms\": false}}'"
+      orderings: 2
+      # Shard counts of the donor runs; never used here (labels are imported).
+      shards:
+        hh_train: 16
+        pku_train: 32
+        ultrafeedback_train: 27
+        helpsteer2_train: 5
+        community_alignment_en: 32
+        wildfeedback_st: 3
+        ca_en_mt_p1: 20
+        wf_mt: 6
+      concurrency: 64
+      label: {time: "48:00:00", mem: 24G}
+
+  models:
+    neutral_qwen3_8b: value-generalization/neutral-sft-v3-qwen3-8b
+  algo: dpo
+  wandb_project: valuegen
+
+  train:
+    # The released HF init, pinned (current main at release time).
+    model_revision: f1550fe714e01e2116cc4fdf3a1d510f8fd379c7
+    # Explicit, not inferred from the HF name (whose spelling selects the
+    # wrong template family); byte-identical to the paper runs' template
+    # for every DPO conversation shape.
+    chat_format: qwen_chatml
+    learning_rate: 5.0e-6
+    lr_scheduler_type: cosine
+    warmup_steps: 0.1
+    num_train_epochs: 1
+    val_fraction: 0.0
+    beta: 0.1
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1
+    per_device_eval_batch_size: 1
+    gradient_checkpointing: false
+    eval_strategy: "no"
+    remove_unused_columns: false
+    use_peft: false
+    save_strategy: "no"
+    save_only_model: true
+    save_total_limit: 1
+    dtype: float32
+    bf16: true
+    fsdp: "full_shard auto_wrap"
+    fsdp_config: configs/fsdp/full_shard.json
+    report_to: none
+    logging_steps: 10
+    seed: 42
+  resources:
+    train: {time: "03:00:00", mem: 0, gpus: 8, nproc: 8}
+
+evaluation:
+  # temperature 1.0 + max_tokens 2048 are explicit (see header); they are
+  # part of the base-eval identity, so this run has its own base_evals store.
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  temperature: 1.0
+  max_tokens: 2048
+  judge: {model: Qwen/Qwen3.6-27B, serve: local, gpus: 8, mem: 400G, env: eval_api}
+  resources: {time: "1-00:00:00", mem: 64G, gpus: 1}
+  # Base slot: format the neutral SFT by its pinned chat format, not the
+  # fork's model-name heuristic (the HF name would select the wrong branch).
+  # Same prompt bytes the paper's base evals used.
+  scaffolds:
+    neutral_qwen3_8b: qwen_chatml
+  matrices:
+    variants: [likert_normalized, choice_normalized, likert_raw, choice_raw]
+    cols: all

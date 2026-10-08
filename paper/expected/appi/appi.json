@@ -1,0 +1,69 @@
+{
+ "contingency_olmo32b_vs_qwen8b": {
+  "personal_growth": {
+   "emotional_authenticity_and_openness": 22,
+   "leadership_qualities": 45,
+   "professional_and_intellectual_integrity": 1,
+   "structured_and_methodical_reasoning": 2
+  },
+  "professional_ethics_and_integrity": {
+   "emotional_authenticity_and_openness": 1,
+   "leadership_qualities": 16,
+   "professional_and_intellectual_integrity": 32,
+   "structured_and_methodical_reasoning": 3
+  },
+  "risk_management": {
+   "emotional_authenticity_and_openness": 8,
+   "leadership_qualities": 48,
+   "structured_and_methodical_reasoning": 33
+  },
+  "structured_and_methodical_reasoning": {
+   "leadership_qualities": 7,
+   "structured_and_methodical_reasoning": 48
+  }
+ },
+ "contingency_olmo32b_vs_vitw_l3": {
+  "personal_growth": {
+   "Epistemic values": 4,
+   "Personal values": 27,
+   "Practical values": 5,
+   "Protective values": 8,
+   "Social values": 26
+  },
+  "professional_ethics_and_integrity": {
+   "Epistemic values": 6,
+   "Personal values": 6,
+   "Practical values": 6,
+   "Protective values": 22,
+   "Social values": 12
+  },
+  "risk_management": {
+   "Epistemic values": 12,
+   "Personal values": 14,
+   "Practical values": 24,
+   "Protective values": 16,
+   "Social values": 23
+  },
+  "structured_and_methodical_reasoning": {
+   "Epistemic values": 24,
+   "Personal values": 2,
+   "Practical values": 25,
+   "Social values": 4
+  }
+ },
+ "medoids": {
+  "olmo3_32b": [
+   "personal_growth",
+   "professional_ethics_and_integrity",
+   "risk_management",
+   "structured_and_methodical_reasoning"
+  ],
+  "qwen3_8b": [
+   "emotional_authenticity_and_openness",
+   "leadership_qualities",
+   "professional_and_intellectual_integrity",
+   "structured_and_methodical_reasoning"
+  ]
+ },
+ "procrustes_r": 0.851935926682511
+}

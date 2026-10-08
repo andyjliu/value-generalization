@@ -1,0 +1,182 @@
+# Constitution-v3 SFT sweep (Qwen3-8B raw base). Sibling of the DPO run
+# const_v3_dpo_full49.yaml, but SFT off the *raw* base instead of DPO off the
+# neutral SFT -- the constitution-alignment comparison arm.
+#
+# ── Tenets: all 66, not the DPO 49 ─────────────────────────────────────────
+# The DPO pool is 49 because that's the set that saturates the min-cost flow
+# at 4,000 pairs/tenet. That constraint is a DPO-data artifact and does NOT
+# apply to SFT: value-generalization/constitution-v3-sft ships a flat 5,000
+# clean rows for ALL 66 tenets, no assignment, nothing dropped. So we train
+# the full constitution (66) here and subset to the DPO 49 in analysis when
+# comparing the two arms (the 49 are a strict subset). The
+# 17 extra tenets (in 66, not in 49): hard_constraint_fidelity,
+# honest_creative_feedback, balanced_ethical_perspectives,
+# performative_advocacy, proactive_issue_identification, dark_fiction_engagement,
+# preserving_checks_balances, steelman_multiple_views,
+# equanimity_under_existential_challenges, metaphysical_uncertainty_commitment,
+# true_self_integrity, mature_error_handling, examining_human_existential_frames,
+# mental_health_awareness, addressing_underlying_distress, direct_crisis_response,
+# user_default_adjustment.
+#
+# ── Data: imported from HF, never generated ────────────────────────────────
+# method is model_spec_aft + algo: sft only to reuse the fork's SFT trainer,
+# pinned chat templates, merge step and conflictscope eval. The per-tenet
+# `datasets/{tenet}/dataset.jsonl` (TRL pair format {prompt:[user],
+# chosen:[assistant]}, 5,000 rows each) are PRE-MATERIALIZED from the HF set
+# by scripts/prepare_sft_data.py *before* `gt run`. With every dataset
+# present, model_spec_aft.build_data() skips generation entirely and the
+# `generation:` block below is inert (present so the module loads and hashed,
+# like the DPO run's oracle block, but no API/GPU is ever spent on it --
+# serve: local means any accidentally-missing tenet would surface as a SLURM
+# generate stage we'd notice, never a silent inline API call).
+#
+#   .venvs/core/bin/python scripts/prepare_sft_data.py \
+#       -c configs/experiments/ground_truth/const_v3_sft_full66.yaml
+#   valuegen gt run -c configs/experiments/ground_truth/const_v3_sft_full66.yaml
+#
+# ── Init / recipe ──────────────────────────────────────────────────────────
+# Qwen/Qwen3-8B-Base (raw base, ungated). full-FT SFT, lr 1e-5, ONE epoch,
+# val_fraction 0 (trains on all 5,000 rows/tenet; the trainer's historical
+# 90/10 split is dropped, eval_strategy "no"), max_length 2048 (see train).
+# The "qwen" path substring
+# imprints Qwen3's real ChatML instruct template (byte-matched port in
+# training.CHAT_TEMPLATES, asserted by tests/ground_truth/test_chat_templates.py) -- the
+# faithful vendor instruct format, EOS aligned by align_eos_with_template.
+#
+# ── Denominator: the raw base under URIAL ──────────────────────────────────
+# The {mtag}_base.csv slot is the *true* training init -- Qwen3-8B-Base
+# itself. A raw base served under a chat template it never saw yields junk
+# continuations; evaluation.scaffolds routes the base slot through the URIAL zero-shot
+# scaffold (training.SCAFFOLD_TEMPLATES["urial0"]) instead, so the base answers
+# inside a markdown transcript and stops cleanly. That eval lands as
+# Qwen3-8B-Base_urial0_base.csv in the shared store below; base_scaffold() is a per-model knob outside the eval
+# identity, so nothing about the store changes. Steerability is lift over
+# the real base. The DPO arm (const_v3_dpo_full49)
+# still normalizes against neutral SFT; cross-arm comparisons must account for
+# the different denominator (raw base and neutral SFT agree at r~0.93-0.97 on
+# these matrices, so the picture is stable).
+#
+# ── Eval store REUSE ───────────────────────────────────────────────────────
+# The evaluation block below is byte-identical to const_v3_dpo_full49's, and
+# base_eval_identity() hashes only the eval knobs (NOT reference/model names),
+# so this run lands in the SAME conflictscope-* base_evals store the DPO run
+# uses: its spliced first-turn cache.json and both the neutral and the urial0
+# base denominators live there. The prep script copies cache.json into THIS
+# run's model_evals/ dir before the first eval task.
+#
+# HASHED BLOCK WARNING: intervention.* hashes into the intervention id; gt_id
+# hashes evaluation on top.
+
+name: const_v3_sft_full66
+
+# Controller pacing only (NOT hashed): 8 tenets trained, then evaluated,
+# judge released, next 8, ... -> 9 waves (8x8 + 2) over 66 tenets.
+schedule:
+  wave: 8
+
+intervention:
+  method: model_spec_aft
+  schema_version: 4
+  value_set: constitution_tenets_v3
+  # All 66 constitution-v3 tenets (value_set order).
+  values: &pool66
+    [hard_constraint_fidelity, honest_creative_feedback, correcting_counterproductive_advice,
+     resisting_crowd_agreement, calibrated_uncertainty, accurate_overall_impressions,
+     respecting_rational_agency, balanced_ethical_perspectives, disagreeing_with_experts,
+     honest_uncomfortable_truths, performative_advocacy, transparent_withholding,
+     substantive_medical_guidance, substantive_legal_help, context_sensitive_help,
+     scope_limited_code_fixes, plausible_interpretation, proactive_issue_identification,
+     respecting_user_autonomy, discourage_excessive_reliance, avoid_unlikely_harm_refusals,
+     no_wishy_washy_responses, transparent_limitations, dont_assume_malicious_intent,
+     calibrated_caveats, non_condescending_engagement, constructive_hypothetical_engagement,
+     dark_fiction_engagement, no_preachy_tone, no_unnecessary_padding, political_reticence,
+     personal_autonomy_risky_choices, harm_reduction_guidance, current_guidance_over_extrapolation,
+     weighting_recoverability, novel_situation_caution, preserving_checks_balances,
+     power_legitimacy, fostering_independent_judgment, political_factual_accuracy,
+     steelman_multiple_views, neutral_terminology, empowering_reasoning,
+     equanimity_under_existential_challenges, metaphysical_uncertainty_commitment,
+     true_self_integrity, mature_error_handling, examining_human_existential_frames,
+     conscientious_non_sabotage, conventional_compliance, upfront_concerns,
+     adjusting_for_minors, embedded_instruction_boundary, source_quality_calibration,
+     care_for_non_principals, avoiding_overclarification, transparency_about_nature,
+     avoid_self_destructive_enabling, mental_health_awareness, addressing_underlying_distress,
+     non_amplifying_emotional_validation, direct_crisis_response, substantive_professional_guidance,
+     answering_within_frameworks, user_default_adjustment, user_activated_communication]
+
+  models:
+    qwen3_8b_base: Qwen/Qwen3-8B-Base
+  algo: sft
+  wandb_project: valuegen
+
+  # INERT (see header): every dataset is pre-materialized from HF, so nothing
+  # is generated and none of these knobs is exercised. Present so the module
+  # loads; hashed into the intervention id, so keep it stable.
+  generation:
+    n_samples: 5000
+    questions_per_domain: 50
+    model_id: Qwen/Qwen3.6-27B
+    serve: local
+    serve_env: eval_api
+    gpus: 8
+    mem: 96G
+    time: "2-00:00:00"
+    max_concurrent: 30
+    disable_thinking: true
+    generate: {time: "1-12:00:00", mem: 16G}
+
+  train:
+    learning_rate: 1.0e-5
+    lr_scheduler_type: cosine
+    warmup_steps: 0.1
+    num_train_epochs: 1
+    val_fraction: 0.0
+    # 2048, not TRL's 1024 default: under the
+    # pinned Qwen template 23% of the HF rows exceed 1024 tokens (12 tenets
+    # have >50% over, substantive_legal_help / steelman_multiple_views /
+    # balanced_ethical_perspectives ~90%) and keep_start truncation would
+    # drop their completion tails and EOS. At 2048 ~0.03% of rows are
+    # touched (sample max 2076). Matches evaluation.max_tokens. The DPO run
+    # kept the 1024 default; only ~4% of its pairs were over it.
+    max_length: 2048
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1
+    per_device_eval_batch_size: 1
+    gradient_checkpointing: false
+    eval_strategy: "no"
+    use_peft: false
+    save_strategy: "no"
+    save_only_model: true
+    save_total_limit: 1
+    dtype: float32
+    bf16: true
+    fsdp: "full_shard auto_wrap"
+    fsdp_config: configs/fsdp/full_shard.json
+    report_to: none
+    logging_steps: 10
+    seed: 42
+  resources:
+    train: {time: "03:00:00", mem: 0, gpus: 8, nproc: 8}
+
+evaluation:
+  # BYTE-IDENTICAL to const_v3_dpo_full49.yaml's evaluation block in every
+  # base_eval_identity knob (the scaffolds map below is a per-model base-slot
+  # knob outside that identity) -> same base_evals store and cache reused,
+  # with the urial0 base denominator alongside. See header.
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  temperature: 1.0
+  max_tokens: 2048
+  judge: {model: Qwen/Qwen3.6-27B, serve: local, gpus: 8, mem: 400G, env: eval_api}
+  resources: {time: "1-00:00:00", mem: 64G, gpus: 1}
+  # Denominator = the raw base itself (Qwen3-8B-Base), served under the URIAL
+  # zero-shot scaffold so its {mtag}_base.csv is clean rather than run-on. This
+  # is a per-model base-slot knob outside base_eval_identity, so the store is
+  # shared; the eval lands as Qwen3-8B-Base_urial0_base.csv.
+  scaffolds:
+    qwen3_8b_base: urial0
+  matrices:
+    variants: [likert_normalized, choice_normalized, likert_raw, choice_raw]
+    cols: all

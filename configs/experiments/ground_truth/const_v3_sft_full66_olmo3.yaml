@@ -1,0 +1,139 @@
+# Constitution-v3 SFT sweep (OLMo-3 7B raw base). Identical to
+# const_v3_sft_full66.yaml -- same 66 tenets, same HF-imported per-tenet data,
+# same recipe and eval -- with the init and the URIAL raw-base denominator
+# swapped to the raw OLMo-3 base. Read that file's header for
+# the full rationale (import-don't-generate, eval-store reuse, val_fraction 0).
+#
+# ── Init: allenai/Olmo-3-1025-7B (raw base, ungated) ───────────────────────
+# NOTE the real id is Olmo-3-*1025*-7B; there is no `allenai/Olmo-3-7B`.
+#
+# ── OLMo-3 template landmine ───────────────────────────────────────────────
+# infer_chat_family scans CHAT_FAMILIES = (tulu, olmo-3, olmo, ...) as
+# substrings of the checkpoint path, first hit wins. Olmo-3 post-trains speak
+# ChatML, so the mtag is `olmo-3_7b_base` (HYPHEN) -> the merged dir
+# `{iid}_olmo-3_7b_base_{tenet}_merged` matches "olmo-3" before "olmo" and
+# gets the ChatML template (training.CHAT_TEMPLATES["olmo-3"], byte-matched to
+# Olmo-3-Instruct, asserted by tests/ground_truth/test_chat_templates.py). A bare `olmo3`
+# or `olmo` spelling would silently fall through to the OLMo-2 tulu template.
+# The raw-base id `allenai/Olmo-3-1025-7B` already carries "Olmo-3", so the
+# reference (neutral) also resolves ChatML consistently.
+#
+# ── Denominator: the raw base under URIAL ──────────────────────────────────
+# The {mtag}_base.csv slot is the true training init, Olmo-3-1025-7B itself,
+# served under the URIAL zero-shot scaffold (evaluation.scaffolds ->
+# training.SCAFFOLD_TEMPLATES["urial0"]) so the base answers inside a markdown
+# transcript rather than running to the token cap under a ChatML template it
+# never saw. That eval lands as Olmo-3-1025-7B_urial0_base.csv in the shared
+# store; base_scaffold() is a per-model base-slot knob outside
+# base_eval_identity, so the store is unchanged.
+# The DPO arm (const_v3_dpo_full49_olmo3) still normalizes against neutral SFT;
+# cross-arm comparisons must account for the different denominator (raw base
+# and neutral SFT agree at r~0.93 on these matrices).
+#
+#   .venvs/core/bin/python scripts/prepare_sft_data.py \
+#       -c configs/experiments/ground_truth/const_v3_sft_full66_olmo3.yaml
+#   valuegen gt run -c configs/experiments/ground_truth/const_v3_sft_full66_olmo3.yaml
+#
+# HASHED BLOCK WARNING: intervention.* hashes into the intervention id; gt_id
+# hashes evaluation on top.
+
+name: const_v3_sft_full66_olmo3
+
+schedule:
+  wave: 8
+
+intervention:
+  method: model_spec_aft
+  schema_version: 4
+  value_set: constitution_tenets_v3
+  values: &pool66
+    [hard_constraint_fidelity, honest_creative_feedback, correcting_counterproductive_advice,
+     resisting_crowd_agreement, calibrated_uncertainty, accurate_overall_impressions,
+     respecting_rational_agency, balanced_ethical_perspectives, disagreeing_with_experts,
+     honest_uncomfortable_truths, performative_advocacy, transparent_withholding,
+     substantive_medical_guidance, substantive_legal_help, context_sensitive_help,
+     scope_limited_code_fixes, plausible_interpretation, proactive_issue_identification,
+     respecting_user_autonomy, discourage_excessive_reliance, avoid_unlikely_harm_refusals,
+     no_wishy_washy_responses, transparent_limitations, dont_assume_malicious_intent,
+     calibrated_caveats, non_condescending_engagement, constructive_hypothetical_engagement,
+     dark_fiction_engagement, no_preachy_tone, no_unnecessary_padding, political_reticence,
+     personal_autonomy_risky_choices, harm_reduction_guidance, current_guidance_over_extrapolation,
+     weighting_recoverability, novel_situation_caution, preserving_checks_balances,
+     power_legitimacy, fostering_independent_judgment, political_factual_accuracy,
+     steelman_multiple_views, neutral_terminology, empowering_reasoning,
+     equanimity_under_existential_challenges, metaphysical_uncertainty_commitment,
+     true_self_integrity, mature_error_handling, examining_human_existential_frames,
+     conscientious_non_sabotage, conventional_compliance, upfront_concerns,
+     adjusting_for_minors, embedded_instruction_boundary, source_quality_calibration,
+     care_for_non_principals, avoiding_overclarification, transparency_about_nature,
+     avoid_self_destructive_enabling, mental_health_awareness, addressing_underlying_distress,
+     non_amplifying_emotional_validation, direct_crisis_response, substantive_professional_guidance,
+     answering_within_frameworks, user_default_adjustment, user_activated_communication]
+
+  models:
+    olmo-3_7b_base: allenai/Olmo-3-1025-7B
+  algo: sft
+  wandb_project: valuegen
+
+  # INERT (data imported from HF; nothing generated). Hashed -- keep stable.
+  generation:
+    n_samples: 5000
+    questions_per_domain: 50
+    model_id: Qwen/Qwen3.6-27B
+    serve: local
+    serve_env: eval_api
+    gpus: 8
+    mem: 96G
+    time: "2-00:00:00"
+    max_concurrent: 30
+    disable_thinking: true
+    generate: {time: "1-12:00:00", mem: 16G}
+
+  train:
+    learning_rate: 1.0e-5
+    lr_scheduler_type: cosine
+    warmup_steps: 0.1
+    num_train_epochs: 1
+    val_fraction: 0.0
+    # 2048, matching const_v3_sft_full66.yaml: the
+    # same HF rows exceed TRL's 1024 default in ~23% of cases under a ChatML
+    # template, and keep_start truncation would drop completion tails + EOS.
+    max_length: 2048
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1
+    per_device_eval_batch_size: 1
+    gradient_checkpointing: false
+    eval_strategy: "no"
+    use_peft: false
+    save_strategy: "no"
+    save_only_model: true
+    save_total_limit: 1
+    dtype: float32
+    bf16: true
+    fsdp: "full_shard auto_wrap"
+    fsdp_config: configs/fsdp/full_shard.json
+    report_to: none
+    logging_steps: 10
+    seed: 42
+  resources:
+    train: {time: "03:00:00", mem: 0, gpus: 8, nproc: 8}
+
+evaluation:
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  temperature: 1.0
+  max_tokens: 2048
+  judge: {model: Qwen/Qwen3.6-27B, serve: local, gpus: 8, mem: 400G, env: eval_api}
+  resources: {time: "1-00:00:00", mem: 64G, gpus: 1}
+  # Denominator = the raw base itself (Olmo-3-1025-7B) under the URIAL zero-shot
+  # scaffold, so its {mtag}_base.csv is clean rather than run-on. Per-model
+  # base-slot knob outside base_eval_identity -> shared store; the eval lands as
+  # Olmo-3-1025-7B_urial0_base.csv.
+  scaffolds:
+    olmo-3_7b_base: urial0
+  matrices:
+    variants: [likert_normalized, choice_normalized, likert_raw, choice_raw]
+    cols: all

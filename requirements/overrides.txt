@@ -1,0 +1,2 @@
+# PyPI's torchcodec 0.14 is CUDA-13-linked; this is the newest CUDA-12 build.
+torchcodec==0.11.1+cu128

@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+& \textbf{\taxonomyname-Olmo-32B} & \textbf{Values in the Wild} & \textbf{LitmusValues} \\
+\midrule
+Olmo-7B DPO & \textbf{2.19}{\scriptsize$\pm$0.18} & 1.11{\scriptsize$\pm$0.08} & 1.50{\scriptsize$\pm$0.25} \\
+Olmo-7B SFT & \textbf{2.31}{\scriptsize$\pm$0.19} & 0.69{\scriptsize$\pm$0.26} & 0.78{\scriptsize$\pm$0.24} \\
+Qwen-8B DPO & \textbf{3.02}{\scriptsize$\pm$0.25} & 0.99{\scriptsize$\pm$0.08} & 1.94{\scriptsize$\pm$0.40} \\
+Qwen-8B SFT & \textbf{1.77}{\scriptsize$\pm$0.21} & 0.83{\scriptsize$\pm$0.16} & 0.95{\scriptsize$\pm$0.25} \\
+\midrule
+Olmo-32B DPO & \textbf{2.15}{\scriptsize$\pm$0.13} & 1.09{\scriptsize$\pm$0.07} & 2.12{\scriptsize$\pm$0.32} \\
+Olmo-32B SFT & \textbf{2.12}{\scriptsize$\pm$0.17} & 0.40{\scriptsize$\pm$0.21} & 0.91{\scriptsize$\pm$0.22} \\
+Qwen-30B DPO & \textbf{2.51}{\scriptsize$\pm$0.25} & 0.93{\scriptsize$\pm$0.07} & 1.79{\scriptsize$\pm$0.31} \\
+Qwen-30B SFT & \textbf{1.51}{\scriptsize$\pm$0.14} & 0.63{\scriptsize$\pm$0.17} & 0.72{\scriptsize$\pm$0.26} \\
+\midrule
+\textbf{Aggregate} & \textbf{2.61}{\scriptsize$\pm$0.13} & 0.95{\scriptsize$\pm$0.09} & 1.62{\scriptsize$\pm$0.17} \\
+\bottomrule
+\end{tabular}
+\caption{Comparing $z$-scores for \taxonomyname and two existing value taxonomies, which measure how well they recover the value generalization structure found in \Cref{sec:singlevalue} across all eight fine-tuning setups. The $z$-score metric enables us to fairly compare taxonomies with different numbers of categories. \textbf{Aggregate} uses a pooled permutation test across all eight interventions, rather than just averaging $z$-scores across interventions; $\pm$ denotes 95\% confidence intervals over bootstrapped steerability metrics. We find that \taxonomyname has the highest $z$-score aggregated across all methods, and that differences between \taxonomyname and other taxonomies are generally significant.}
+\label{tab:taxonomy-z}
+\end{table}

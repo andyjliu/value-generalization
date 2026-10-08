@@ -1,0 +1,32 @@
+# Data: only the shipped ground-truth matrices are tracked
+data/*
+!data/gt/
+data/gt/*/model_evals/
+data/gt/base_evals/
+
+slurm_logs/
+slurm_jobs/
+wandb/
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv
+venv/
+.venvs/
+
+.pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+
+.DS_Store
+*.swp
+.vscode/
+
+# Local secrets and machine config (see .env.example, configs/cluster.yaml.example)
+.env
+configs/cluster.yaml

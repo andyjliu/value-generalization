@@ -1,0 +1,52 @@
+# Test fixture: a label_subset DPO grid (5 base models x 13 tenets) evaluated
+# with a locally served judge. Prelabeled (no oracle block), so nothing here
+# generates labels. Shapes only — not a real experiment.
+name: label_subset_grid
+intervention:
+  method: label_subset
+  value_set: constitution_tenets_v3
+  values: [calibrated_uncertainty, respecting_user_autonomy, hard_constraint_fidelity,
+           respecting_rational_agency, accurate_overall_impressions, substantive_legal_help,
+           substantive_medical_guidance, disagreeing_with_experts, resisting_crowd_agreement,
+           balanced_ethical_perspectives, avoid_unlikely_harm_refusals,
+           discourage_excessive_reliance, scope_limited_code_fixes]
+  labels:
+    dir: data/labels/fixture
+    tau: 0.5
+    seed: 42
+  models:
+    olmo7b_sft: allenai/OLMo-2-1124-7B-SFT
+    olmo7b_inst: allenai/OLMo-2-1124-7B-Instruct
+    qwen7b_inst: Qwen/Qwen2.5-7B-Instruct
+    tulu8b_sft: allenai/Llama-3.1-Tulu-3-8B-SFT
+    tulu8b_dpo: allenai/Llama-3.1-Tulu-3-8B
+  wandb_project: valuegen
+  train:
+    learning_rate: 5.0e-5
+    num_train_epochs: 4
+    per_device_train_batch_size: 2
+    per_device_eval_batch_size: 1
+    gradient_accumulation_steps: 8
+    gradient_checkpointing: true
+    eval_strategy: "no"
+    remove_unused_columns: false
+    use_peft: true
+    lora_r: 32
+    lora_alpha: 64
+    lora_target_modules: [q_proj, v_proj, k_proj, o_proj, gate_proj, up_proj, down_proj]
+    report_to: none
+    seed: 42
+    beta: 0.1
+  resources:
+    train: {time: "05:00:00", mem: 48G, gpus: 1}
+evaluation:
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  judge: {model: Qwen/Qwen3.6-27B, serve: local, gpus: 2, mem: 96G, env: eval_api}
+  resources: {time: "04:00:00", mem: 32G, gpus: 1}
+  matrices:
+    variants: [likert_normalized, choice_normalized, likert_raw, choice_raw]
+    cols: all

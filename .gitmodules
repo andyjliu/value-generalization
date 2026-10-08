@@ -1,0 +1,16 @@
+[submodule "external/conflictscope"]
+	path = external/conflictscope
+	url = https://github.com/andyjliu/conflictscope-dev.git
+	branch = dev
+[submodule "external/persona_vectors"]
+	path = external/persona_vectors
+	url = https://github.com/andyjliu/persona_vectors.git
+	branch = main
+[submodule "external/weight-steering"]
+	path = external/weight-steering
+	url = https://github.com/andyjliu/weight-steering.git
+	branch = main
+[submodule "external/model_spec_midtraining"]
+	path = external/model_spec_midtraining
+	url = https://github.com/andyjliu/model_spec_midtraining
+	branch = main

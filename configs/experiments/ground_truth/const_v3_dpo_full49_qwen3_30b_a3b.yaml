@@ -1,0 +1,227 @@
+# 49-tenet DPO grid on Qwen3-30B-A3B (MoE, 30.5B total / 3.3B active), init = value-neutral SFT
+# (value-generalization/neutral-sft-v3-qwen3-30b-a3b @ 95b8b6a5).
+#
+# ── Scale-up of the single-value grid ──────────────────────────────────────
+# Same tenets, same imported per-tenet data, same hyperparameters and same
+# ConflictScope eval as const_v3_dpo_full49.yaml (Qwen3-8B); read that file's header
+# for data/label provenance.
+# Deliberate differences from the 7B/8B run, all forced by model size:
+#   * sharding: FSDP2 + wrapper-level activation checkpointing
+#     (configs/fsdp/fsdp2_qwen3_moe.json, wraps Qwen3MoeDecoderLayer) -- the config the
+#     30B/32B neutral-SFT runs were measured on. lr, batch
+#     (2 x 8 ranks x accum 1), epochs, beta 0.1, val_fraction 0 are unchanged.
+#   * chat format: explicit `train.chat_format: qwen_chatml` (template
+#     sha256-identical to the HF neutral-SFT repo's chat_template.jinja).
+#   * MoE: TRL's DPOConfig has no router aux loss term; the objective is the
+#     8B one. (DPO policy+reference under FSDP2 is UNTESTED at this size --
+#     the pilot is the test.)
+#   * schedule: waves of 8 + delete_exports (a bf16 export is ~65 GB; see
+#     "Storage" below).
+#
+# ── Path spelling is load-bearing (eval-time formatting) ───────────────────
+# `gt` evals load the candidate in-process through the conflictscope fork,
+# which formats by path substring: a path containing `qwen3-` (HYPHEN, e.g.
+# the HF cache dir .../neutral-sft-v3-qwen3-30b-a3b/...) takes the
+# Qwen3-instruct branch and appends an empty <think> block the model never
+# saw. Underscore spellings (`qwen3_30b_a3b`, every merged dir derived from
+# the mtag) take plain ChatML, which is what training used; the base slot
+# (the HF name) is pinned to qwen_chatml via evaluation.scaffolds.
+#
+# ── Storage ─────────────────────────────────────────────────────────────────
+# The training task prunes the fp32 trainer save (~125 GB) as soon as its
+# export verifies (schedule.prune_trainer_save, on by default with
+# delete_exports), so a trained tenet holds only its ~65 GB bf16 export until
+# the wave's evals finish. Free space a wave of W needs, init excluded:
+# ~65*W + 130 GB with one training at a time, ~65*W + 260 GB with two (the
+# cluster throttle, max_concurrent_gpus 16): the in-flight fp32 save and the
+# export being written coexist. Size schedule.wave to the free quota.
+#
+# ── Before launch ───────────────────────────────────────────────────────────
+#   1. init weights: the pinned base revision is downloaded from HF.
+#   2. datasets: the same 49 per-tenet DPO datasets as const_v3_dpo_full49
+#      (see that header), plus the spliced first-turn cache.json seeded into
+#      the shared base_evals store and this run's model_evals/.
+#   3. the conflictscope fork's gpus_needed() reads
+#      CONFLICTSCOPE_GPU_MEMORY_GB (export it in the shell or controller
+#      that launches the run, e.g. 256; sbatch passes it on to the jobs), so
+#      a 30b/32b candidate loads at tp=1 on one large GPU.
+#
+# Launch (--no-wait is refused with schedule.wave):
+#   valuegen gt run -c configs/experiments/ground_truth/const_v3_dpo_full49_qwen3_30b_a3b.yaml --stop-after-wave 1   # pilot pass; rerun without the flag for the rest
+#
+# HASHED BLOCK WARNING: intervention.* hashes into the intervention id; gt_id
+# hashes evaluation on top. `schedule` is controller pacing only (not hashed).
+
+name: const_v3_dpo_full49_qwen3_30b_a3b
+
+# Controller pacing (not hashed). Full run (wave: 8): train 8, eval, delete their
+# exports + trainer weights (tombstone `<merged>.deleted`), repeat -> 7 waves (6x8 + 1).
+# The base row rides in the last scheduled wave's eval.
+schedule:
+  # PILOT PASS = wave 0 of this run: launch with `--stop-after-wave 1` (the 7
+  # pilot tenets + 1, base eval included), inspect, then rerun without the flag:
+  # wave 0 is a no-op and the run carries on from wave 1.
+  wave: 8
+  delete_exports: true
+
+intervention:
+  method: label_subset
+  value_set: constitution_tenets_v3
+  # Order = wave order (hashed): the 7 pilot tenets first, so a
+  # `schedule.stop_after_wave` pass scores them as waves 0-1 of THIS run.
+  values:
+    [calibrated_uncertainty, substantive_medical_guidance, no_unnecessary_padding,
+     correcting_counterproductive_advice, no_preachy_tone, political_reticence,
+     harm_reduction_guidance, resisting_crowd_agreement, accurate_overall_impressions,
+     respecting_rational_agency, disagreeing_with_experts, honest_uncomfortable_truths,
+     transparent_withholding, substantive_legal_help, context_sensitive_help,
+     scope_limited_code_fixes, plausible_interpretation, respecting_user_autonomy,
+     discourage_excessive_reliance, avoid_unlikely_harm_refusals, no_wishy_washy_responses,
+     transparent_limitations, dont_assume_malicious_intent, calibrated_caveats,
+     non_condescending_engagement, constructive_hypothetical_engagement,
+     personal_autonomy_risky_choices, current_guidance_over_extrapolation, weighting_recoverability,
+     novel_situation_caution, power_legitimacy, fostering_independent_judgment,
+     political_factual_accuracy, neutral_terminology, empowering_reasoning,
+     conscientious_non_sabotage, conventional_compliance, upfront_concerns, adjusting_for_minors,
+     embedded_instruction_boundary, source_quality_calibration, care_for_non_principals,
+     avoiding_overclarification, transparency_about_nature, avoid_self_destructive_enabling,
+     non_amplifying_emotional_validation, substantive_professional_guidance,
+     answering_within_frameworks, user_activated_communication]
+
+  assignment:
+    rule: mincost_flow
+    unit: prompt
+    cap: 4000
+    seed: 42
+    # original order, as in the 8B full49 run the datasets are copied from
+    pool:
+      [correcting_counterproductive_advice, resisting_crowd_agreement, calibrated_uncertainty,
+       accurate_overall_impressions, respecting_rational_agency, disagreeing_with_experts,
+       honest_uncomfortable_truths, transparent_withholding, substantive_medical_guidance,
+       substantive_legal_help, context_sensitive_help, scope_limited_code_fixes,
+       plausible_interpretation, respecting_user_autonomy, discourage_excessive_reliance,
+       avoid_unlikely_harm_refusals, no_wishy_washy_responses, transparent_limitations,
+       dont_assume_malicious_intent, calibrated_caveats, non_condescending_engagement,
+       constructive_hypothetical_engagement, no_preachy_tone, no_unnecessary_padding,
+       political_reticence, personal_autonomy_risky_choices, harm_reduction_guidance,
+       current_guidance_over_extrapolation, weighting_recoverability, novel_situation_caution,
+       power_legitimacy, fostering_independent_judgment, political_factual_accuracy,
+       neutral_terminology, empowering_reasoning, conscientious_non_sabotage,
+       conventional_compliance, upfront_concerns, adjusting_for_minors,
+       embedded_instruction_boundary, source_quality_calibration, care_for_non_principals,
+       avoiding_overclarification, transparency_about_nature, avoid_self_destructive_enabling,
+       non_amplifying_emotional_validation, substantive_professional_guidance,
+       answering_within_frameworks, user_activated_communication]
+
+  # INERT here (the datasets are const_v3_dpo_full49's, see header) but
+  # hashed; same oracle/sources as const_v3_dpo_full49.
+  labels:
+    tau: 0.5
+    seed: 42
+    sources:
+    - pku_train
+    - hh_train
+    - ultrafeedback_train
+    - helpsteer2_train
+    - community_alignment_en
+    - wildfeedback_st
+    - ca_en_mt_p1
+    - wf_mt
+    oracle:
+      model: Qwen/Qwen3.6-27B
+      serve: local
+      gpus: 8
+      mem: 96G
+      env: eval_api
+      enable_prefix_caching: false
+      max_num_batched_tokens: 16384
+      max_num_seqs: 128
+      serve_args:
+      - --gdn-prefill-backend triton
+      - --disable-custom-all-reduce
+      - '--compilation-config ''{"pass_config": {"fuse_allreduce_rms": false}}'''
+      orderings: 2
+      shards:
+        hh_train: 16
+        pku_train: 32
+        ultrafeedback_train: 27
+        helpsteer2_train: 5
+        community_alignment_en: 32
+        wildfeedback_st: 3
+        ca_en_mt_p1: 20
+        wf_mt: 6
+      concurrency: 64
+      label:
+        time: '48:00:00'
+        mem: 24G
+
+  models:
+    neutral_qwen3_30b_a3b: value-generalization/neutral-sft-v3-qwen3-30b-a3b
+  algo: dpo
+  wandb_project: valuegen
+
+  train:
+    # The released HF init, pinned (current main at release time).
+    model_revision: 95b8b6a5cf3833b053f8f2abbf2d7b13421a9b5a
+    chat_format: qwen_chatml
+    learning_rate: 5.0e-6
+    lr_scheduler_type: cosine
+    warmup_steps: 0.1
+    num_train_epochs: 1
+    val_fraction: 0.0
+    beta: 0.1
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1
+    per_device_eval_batch_size: 1
+    gradient_checkpointing: false   # wrapper-level, via fsdp_config
+    eval_strategy: "no"
+    remove_unused_columns: false
+    use_peft: false
+    attn_implementation: sdpa       # no flash_attn on the ROCm venv
+    save_strategy: "no"
+    save_only_model: false   # SHARDED_STATE_DICT + save_only_model=true is rejected by Trainer.__init__; save_strategy=no so no disk impact
+    save_total_limit: 1
+    dtype: float32
+    bf16: true
+    fsdp: true
+    fsdp_config: configs/fsdp/fsdp2_qwen3_moe.json
+    report_to: none
+    logging_steps: 10
+    seed: 42
+    ddp_timeout: 10800
+  resources:
+    # 250 steps; measured SFT step time x ~1.4 for the reference pass -> ~20 min
+    # + ~6 min load/export. 3 h leaves room for a cold HF/comgr cache.
+    train: {time: "03:00:00", mem: 0, gpus: 8, nproc: 8}
+
+evaluation:
+  # Judge/env block = the AMD-cluster form; scenarios, temperature and
+  # max_tokens are the full49/full66 values.
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  temperature: 1.0
+  max_tokens: 2048
+  judge:
+    model: Qwen/Qwen3.6-27B
+    serve: local
+    gpus: 8
+    mem: 400G
+    env: eval_api
+    enable_prefix_caching: false
+    serve_args:
+      - "--gdn-prefill-backend triton"
+      - "--disable-custom-all-reduce"
+      - "--compilation-config '{\"pass_config\": {\"fuse_allreduce_rms\": false}}'"
+  # 12 h = the walltime cap of the cluster these ran on. One packed node runs 8 candidates.
+  resources: {env: eval_api, time: "12:00:00", mem: 64G, gpus: 1}
+  # Base slot: format the neutral SFT by its pinned chat format, not the
+  # fork's model-name heuristic (the HF name would select the wrong branch).
+  # Same prompt bytes the paper's base evals used.
+  scaffolds:
+    neutral_qwen3_30b_a3b: qwen_chatml
+  matrices:
+    variants: [likert_normalized, choice_normalized, likert_raw, choice_raw]
+    cols: all

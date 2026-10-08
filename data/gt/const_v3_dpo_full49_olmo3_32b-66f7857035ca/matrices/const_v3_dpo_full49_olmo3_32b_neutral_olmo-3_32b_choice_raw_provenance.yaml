@@ -1,0 +1,72 @@
+matrix: const_v3_dpo_full49_olmo3_32b_neutral_olmo-3_32b_choice_raw
+date: '2026-09-27'
+source_csvs:
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_base.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_calibrated_uncertainty.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_substantive_medical_guidance.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_no_unnecessary_padding.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_correcting_counterproductive_advice.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_no_preachy_tone.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_political_reticence.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_harm_reduction_guidance.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_resisting_crowd_agreement.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_accurate_overall_impressions.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_respecting_rational_agency.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_disagreeing_with_experts.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_honest_uncomfortable_truths.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_transparent_withholding.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_substantive_legal_help.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_context_sensitive_help.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_scope_limited_code_fixes.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_plausible_interpretation.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_respecting_user_autonomy.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_discourage_excessive_reliance.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_avoid_unlikely_harm_refusals.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_no_wishy_washy_responses.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_transparent_limitations.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_dont_assume_malicious_intent.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_calibrated_caveats.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_non_condescending_engagement.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_constructive_hypothetical_engagement.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_personal_autonomy_risky_choices.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_current_guidance_over_extrapolation.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_weighting_recoverability.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_novel_situation_caution.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_power_legitimacy.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_fostering_independent_judgment.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_political_factual_accuracy.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_neutral_terminology.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_empowering_reasoning.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_conscientious_non_sabotage.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_conventional_compliance.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_upfront_concerns.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_adjusting_for_minors.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_embedded_instruction_boundary.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_source_quality_calibration.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_care_for_non_principals.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_avoiding_overclarification.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_transparency_about_nature.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_avoid_self_destructive_enabling.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_non_amplifying_emotional_validation.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_substantive_professional_guidance.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_answering_within_frameworks.csv
+- data/gt/const_v3_dpo_full49_olmo3_32b-66f7857035ca/model_evals/neutral_olmo-3_32b_user_activated_communication.csv
+base_model: <finetune_root>/merged/neutral_sft_v3_olmo-3_32b_merged
+judge: Qwen/Qwen3.6-27B
+scenario_dir: data/scenarios/const_v3_cs
+git:
+  valuegen: fc87caa9a608a973ebe8edcb42e6c886962cfdf5
+  external/conflictscope: 04e10e8169710c67589135b97ad16c4d41231045
+  external/inspect_evals: a3837b57f40805efb4064734fbad7f93f5291c38
+  external/model_spec_dataset: 89c260767c5a0a3a91a06dec77e3ab0306de768f
+  external/model_spec_evals: 1d5df6d651c1e33161e507c8890af7ae00218941
+  external/model_spec_midtraining: 3ec38a0b77e24794f92c4a1d4d4f047159959457
+  external/persona_vectors: 64d3d9a04f7600ff60ae10ead0b5c8c879cb2967
+  external/weight-steering: d9e38b6247718206ce9b1cdfd4299e00a486abb8
+experiment_config: configs/experiments/const_v3_dpo_full49_olmo3_32b.yaml
+intervention_id: const_v3_dpo_full49_olmo3_32b-df9641cd8be8
+gt_id: const_v3_dpo_full49_olmo3_32b-66f7857035ca
+legacy_ids:
+- const_v3_dpo_full49_olmo3_32b-18910364248c
+- const_v3_dpo_full49_olmo3_32b-df9641cd8be8
+legacy_ids_note: GT run ID and intervention ID when these matrices were built, when intervention.models pointed at a local mirror of the neutral SFT; the config now names the HF checkpoint (intervention const_v3_dpo_full49_olmo3_32b-5c2423d56244).

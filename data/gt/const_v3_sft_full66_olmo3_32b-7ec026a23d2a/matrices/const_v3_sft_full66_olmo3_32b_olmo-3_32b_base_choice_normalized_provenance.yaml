@@ -1,0 +1,87 @@
+matrix: const_v3_sft_full66_olmo3_32b_olmo-3_32b_base_choice_normalized
+date: '2026-10-04'
+source_csvs:
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_base.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_hard_constraint_fidelity.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_honest_creative_feedback.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_correcting_counterproductive_advice.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_resisting_crowd_agreement.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_calibrated_uncertainty.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_accurate_overall_impressions.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_respecting_rational_agency.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_balanced_ethical_perspectives.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_disagreeing_with_experts.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_honest_uncomfortable_truths.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_performative_advocacy.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_transparent_withholding.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_substantive_medical_guidance.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_substantive_legal_help.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_context_sensitive_help.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_scope_limited_code_fixes.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_plausible_interpretation.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_proactive_issue_identification.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_respecting_user_autonomy.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_discourage_excessive_reliance.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_avoid_unlikely_harm_refusals.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_no_wishy_washy_responses.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_transparent_limitations.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_dont_assume_malicious_intent.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_calibrated_caveats.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_non_condescending_engagement.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_constructive_hypothetical_engagement.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_dark_fiction_engagement.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_no_preachy_tone.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_no_unnecessary_padding.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_political_reticence.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_personal_autonomy_risky_choices.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_harm_reduction_guidance.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_current_guidance_over_extrapolation.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_weighting_recoverability.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_novel_situation_caution.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_preserving_checks_balances.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_power_legitimacy.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_fostering_independent_judgment.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_political_factual_accuracy.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_steelman_multiple_views.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_neutral_terminology.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_empowering_reasoning.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_equanimity_under_existential_challenges.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_metaphysical_uncertainty_commitment.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_true_self_integrity.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_mature_error_handling.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_examining_human_existential_frames.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_conscientious_non_sabotage.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_conventional_compliance.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_upfront_concerns.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_adjusting_for_minors.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_embedded_instruction_boundary.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_source_quality_calibration.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_care_for_non_principals.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_avoiding_overclarification.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_transparency_about_nature.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_avoid_self_destructive_enabling.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_mental_health_awareness.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_addressing_underlying_distress.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_non_amplifying_emotional_validation.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_direct_crisis_response.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_substantive_professional_guidance.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_answering_within_frameworks.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_user_default_adjustment.csv
+- data/gt/const_v3_sft_full66_olmo3_32b-7ec026a23d2a/model_evals/olmo-3_32b_base_user_activated_communication.csv
+base_model: allenai/Olmo-3-1125-32B
+judge: Qwen/Qwen3.6-27B
+scenario_dir: data/scenarios/const_v3_cs
+git:
+  valuegen: bc14d377825f14cbd01456798318efdd18dec9c4
+  external/conflictscope: 3b59f81ac4a39394a02d45688808829d7cea8cd9
+  external/inspect_evals: a3837b57f40805efb4064734fbad7f93f5291c38
+  external/model_spec_dataset: 89c260767c5a0a3a91a06dec77e3ab0306de768f
+  external/model_spec_evals: 1d5df6d651c1e33161e507c8890af7ae00218941
+  external/model_spec_midtraining: 3ec38a0b77e24794f92c4a1d4d4f047159959457
+  external/persona_vectors: 64d3d9a04f7600ff60ae10ead0b5c8c879cb2967
+  external/weight-steering: d9e38b6247718206ce9b1cdfd4299e00a486abb8
+experiment_config: configs/experiments/const_v3_sft_full66_olmo3_32b.yaml
+intervention_id: const_v3_sft_full66_olmo3_32b-b27ec9fb39e5
+note: rows scored in two runs of this recipe (49 + 17 tenets), combined; see the config
+  header
+normalized_metric: ds (rewritten 2026-10-07 from the stored raw matrix and base rates; previously (raw - base) / (1 - base) in every cell)

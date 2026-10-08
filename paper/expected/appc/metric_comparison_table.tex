@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Metric & Spearman $\rho$ & Avg. & Avg. & Min. \\
+ & to ours & diagonal & $|$off-diag.$|$ & cell \\
+\midrule
+\textbf{Ours (Likert)} & --- & $0.33$ & $0.18$ & $-0.79$ \\
+Ours (binary) & $0.96$ & $0.40$ & $0.20$ & $-0.92$ \\
+ConflictScope \citep{liu2026generative} & $0.98$ & $0.33$ & $0.38$ & $-6.20$ \\
+Raw difference & $0.97$ & $0.17$ & $0.10$ & $-0.70$ \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of different steerability metrics on the Qwen-3-8B DPO
+generalization matrix. All metrics induce highly similar matrices (Spearman
+$\rho \ge 0.96$). However, the ConflictScope metric's mean off-diagonal
+magnitude is inflated by many strongly negative cells, which skews the matrix.
+Our piecewise metric solves this while otherwise reporting highly similar
+generalization to other metrics.}
+\label{tab:metric-comparison}
+\end{table}

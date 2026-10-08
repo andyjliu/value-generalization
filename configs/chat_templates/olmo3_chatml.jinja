@@ -1,0 +1,110 @@
+{#-
+  Olmo-3 chat template, from https://huggingface.co/allenai/Olmo-3-7B-Instruct
+  (chat_template.jinja), reformatted onto multiple lines — whitespace control
+  keeps the rendered bytes identical — with exactly TWO deviations.
+  tests/test_chat_template.py asserts byte-parity with upstream for every
+  tool-free conversation shape, so this file cannot drift silently.
+
+  Turn shape:
+      <|im_start|>user\nWhat is 2+2?<|im_end|>\n<|im_start|>assistant\n4.<|endoftext|>
+
+  Note the asymmetry, which is upstream's and is kept: mid-conversation
+  assistant turns end `<|im_end|>\n`, the FINAL assistant turn ends with
+  `eos_token` (`<|endoftext|>`, id 100257).
+
+  WHY THIS FILE EXISTS instead of `chat_template_path: allenai/Olmo-3-7B-Instruct`,
+  which is otherwise the obvious thing to write. Pointing chat_template_path at
+  the Hub repo makes TRL call `clone_chat_template`, and two things then go
+  wrong:
+
+  * It copies every added token the source has and the target lacks, then
+    resizes the embedding layer. Olmo-3-Instruct renamed four `<|extra_id_*|>`
+    slots to `<functions>` / `</functions>` / `<function_calls>` /
+    `</function_calls>`, so a neutral SFT run would grow the vocab by 4 (padded
+    to a multiple of 64: 100278 -> 100352) and train with untrained embedding
+    rows, for tokens the data never uses.
+  * Upstream has no `{% generation %}` markers, so `assistant_only_loss: true`
+    sends TRL into `get_training_chat_template`, which RAISES on this template:
+    "not training-compatible (missing prefix-preservation or `{% generation %}`
+    markers) and patching is not supported". The final-turn-ends-with-eos
+    asymmetry above is what defeats its patcher.
+
+  Everything that matters is identical between the two tokenizers anyway:
+  <|im_start|> 100264, <|im_end|> 100265, <|endoftext|> 100257, <|pad|> 100277.
+
+  DEVIATION 1 — the auto-injected function-calling system turn is gated on
+  `tools`. Upstream prepends
+
+      <|im_start|>system
+      You are a helpful function-calling AI assistant. You do not currently
+      have access to any functions. <functions></functions><|im_end|>
+
+  to EVERY conversation carrying no system message. Baking that into a
+  value-NEUTRAL SFT run would train a function-calling persona the data does
+  not contain, on every single example. Gated, not deleted: pass `tools` and
+  the original behavior returns verbatim.
+
+  DEVIATION 2 — `{% generation %}` markers wrap assistant content, which is what
+  `assistant_only_loss: true` builds its mask from. Purely additive; rendered
+  output is unchanged. The block covers the assistant's content AND its
+  terminator, so the model is trained to emit the stop token, but excludes the
+  `<|im_start|>assistant\n` header, which is given at generation time.
+-#}
+{#- DEVIATION 1: `and tools is not none` is ours; upstream injects unconditionally. -#}
+{%- set has_system = messages|selectattr('role', 'equalto', 'system')|list|length > 0 -%}
+{%- if not has_system and tools is not none -%}
+    {{- '<|im_start|>system\nYou are a helpful function-calling AI assistant. ' -}}
+    {{- 'You are provided with function signatures within <functions></functions> XML tags. You may call one or more functions to assist with the user query. Output any function calls within <function_calls></function_calls> XML tags. Do not make assumptions about what values to plug into functions.' -}}
+    {{- '<functions>' -}}{{- tools | tojson -}}{{- '</functions><|im_end|>\n' -}}
+{%- endif -%}
+{%- for message in messages -%}
+    {%- if message['role'] == 'system' -%}
+        {{- '<|im_start|>system\n' + message['content'] -}}
+        {%- if tools is not none -%}
+            {{- '<functions>' -}}{{- tools | tojson -}}{{- '</functions>' -}}
+        {%- elif message.get('functions', none) is not none -%}
+            {{- ' <functions>' + message['functions'] + '</functions>' -}}
+        {%- endif -%}
+        {{- '<|im_end|>\n' -}}
+    {%- elif message['role'] == 'user' -%}
+        {{- '<|im_start|>user\n' + message['content'] + '<|im_end|>\n' -}}
+    {%- elif message['role'] == 'assistant' -%}
+        {{- '<|im_start|>assistant\n' -}}
+        {#- DEVIATION 2: the generation block below is ours. -#}
+        {%- generation -%}
+            {%- if message.get('content', none) is not none -%}
+                {{- message['content'] -}}
+            {%- endif -%}
+            {%- if message.get('function_calls', none) is not none -%}
+                {{- '<function_calls>' + message['function_calls'] + '</function_calls>' -}}
+            {%- elif message.get('tool_calls', none) is not none -%}
+                {{- '<function_calls>' -}}
+                {%- for tool_call in message['tool_calls'] -%}
+                    {%- if tool_call is mapping and tool_call.get('function', none) is not none -%}
+                        {%- set args = tool_call['function']['arguments'] -%}
+                        {%- set ns = namespace(arguments_list=[]) -%}
+                        {%- for key, value in args.items() -%}
+                            {%- set ns.arguments_list = ns.arguments_list + [key ~ '=' ~ (value | tojson)] -%}
+                        {%- endfor -%}
+                        {%- set arguments = ns.arguments_list | join(', ') -%}
+                        {{- tool_call['function']['name'] + '(' + arguments + ')' -}}
+                        {%- if not loop.last -%}{{- '\n' -}}{%- endif -%}
+                    {%- else -%}
+                        {{- tool_call -}}
+                    {%- endif -%}
+                {%- endfor -%}
+                {{- '</function_calls>' -}}
+            {%- endif -%}
+            {%- if not loop.last -%}
+                {{- '<|im_end|>\n' -}}
+            {%- else -%}
+                {{- eos_token -}}
+            {%- endif -%}
+        {%- endgeneration -%}
+    {%- elif message['role'] == 'environment' or message['role'] == 'tool' -%}
+        {{- '<|im_start|>environment\n' + message['content'] + '<|im_end|>\n' -}}
+    {%- endif -%}
+    {%- if loop.last and add_generation_prompt -%}
+        {{- '<|im_start|>assistant\n' -}}
+    {%- endif -%}
+{%- endfor -%}

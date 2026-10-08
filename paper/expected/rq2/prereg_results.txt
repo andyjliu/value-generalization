@@ -1,0 +1,45 @@
+arms: 64 of 64 with a complete prefill eval; excluded: none
+
+=== PRIMARY (H1): Spearman persona.tightness -> retention_norm, one-sided, alpha .05 ===
+  rho = +0.426  one-sided p = 0.00023  n = 64
+
+=== Secondary 1: (arm, value) cells, value FE, WLS by denominator, SE clustered by arm ===
+  cells: 384 (49 values); kept (den >= 10): 379; cells aggregate to joined.csv and mean affinity = persona.tightness for every arm
+  variance explained by value identity alone: R2 = 0.46
+  affinity(persona)        [all bins  ] b = +0.0567 per SD  [+0.0361, +0.0774]  p = 7.3e-08  n = 379
+  affinity(persona)        [no top bin] b = +0.0403 per SD  [+0.0072, +0.0734]  p = 0.017  n = 283
+  affinity(sentence)       [all bins  ] b = +0.0210 per SD  [-0.0063, +0.0482]  p = 0.13  n = 379
+  affinity(sentence)       [no top bin] b = +0.0012 per SD  [-0.0311, +0.0336]  p = 0.94  n = 283
+  arm tightness(persona)   [all bins  ] b = +0.0411 per SD  [+0.0211, +0.0612]  p = 5.7e-05  n = 379
+  arm tightness(persona)   [no top bin] b = +0.0229 per SD  [-0.0154, +0.0611]  p = 0.24  n = 283
+  within-value Spearman(affinity, retention_norm): mean rho = +0.283, 33/44 positive, t-test p = 4e-05, sign p = 0.0013
+
+=== Secondary 2: same test on the other prefill metrics ===
+  maiya      rho = +0.581  one-sided p = 2.4e-07  n = 64
+  sturgeon   rho = +0.623  one-sided p = 1.9e-08  n = 64
+  retention  rho = -0.016  one-sided p = 0.55  n = 64
+
+=== Secondary 3: shape ===
+  bin 0 (tightness -0.064..+0.054): mean = 0.643  95% CI [0.586, 0.700]  n = 16
+  bin 1 (tightness +0.064..+0.180): mean = 0.619  95% CI [0.549, 0.689]  n = 16
+  bin 2 (tightness +0.196..+0.318): mean = 0.643  95% CI [0.591, 0.694]  n = 16
+  bin 3 (tightness +0.330..+0.426): mean = 0.787  95% CI [0.760, 0.815]  n = 16
+  without top bin  rho = -0.008  one-sided p = 0.52  n = 48
+  lower two bins   rho = -0.113  one-sided p = 0.73  n = 32
+  upper two bins   rho = +0.673  one-sided p = 1.2e-05  n = 32
+
+=== Secondary 4: effect size ===
+  OLS slope = +0.389  bootstrap 95% CI [+0.203, +0.572]  (10000 arm resamples)
+  OLS slope without top bin = +0.005  bootstrap 95% CI [-0.298, +0.315]
+  pool share per bin: 0.319  0.517  0.147  0.018
+  pool-reweighted Spearman rho = +0.001  bootstrap 95% CI [-0.238, +0.256]  (within-bin resamples; effective n = 41.0)
+
+=== Secondary 5: sentence tightness (descriptive; not spread by the design) ===
+  rho = +0.115  two-sided p = 0.37  (sentence tightness sd = 0.042)
+
+=== Secondary 6: pooled strat64 + ew64 (robustness check only) ===
+  strat64 alone     rho = +0.183  one-sided p = 0.074  n = 64
+  pooled            rho = +0.335  one-sided p = 5.5e-05  n = 128
+  pooled OLS slope (sweep intercepts) = +0.347  [+0.196, +0.498]
+  slope difference strat64 - ew64 = -0.142  p = 0.4
+  pooled, tightness below the top-bin edge (+0.326): rho = +0.060  one-sided p = 0.27  n = 110

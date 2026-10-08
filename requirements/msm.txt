@@ -1,0 +1,8 @@
+# .venvs/msm: runs external/model_spec_midtraining's AFT data generation.
+# Separate from core because safetytooling ==-pins its whole dependency tree.
+-e external/model_spec_midtraining/safety-tooling
+json5
+faiss-cpu
+sentence-transformers
+pytest>=8.3
+pytest-asyncio>=0.24

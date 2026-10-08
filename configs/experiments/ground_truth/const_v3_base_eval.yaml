@@ -1,0 +1,41 @@
+# Base-model-only ConflictScope eval of olmo7b_sft on the constitution_tenets_v3
+# (66-tenet) scenario set. No intervention rows: its sole purpose is to
+# populate the shared base-eval store (data/gt/base_evals/<base_eval_id>/
+# OLMo-2-1124-7B-SFT_base.csv + cache.json of first-turn user prompts) so
+# every later v3 GT run whose evaluation block is byte-identical in the
+# judgment-affecting knobs (scenarios, mode, cache, filter, temperature,
+# max_tokens, max_scenarios, judge/user model) links it instead of re-running.
+#
+# Eval knobs: Qwen3.6-27B judge AND user simulator (user_model defaults
+# to judge.model), interactive mode, --cache, --filter, temperature 0.
+#
+# PREREQ: data/scenarios/const_v3_cs/Qwen3.6-27B.csv must be the *final*
+# merged scenario CSV.
+# evaluate_models.py -d reads only top-level *.csv in the scenario dir, and
+# the base-eval identity hashes the path, not the contents — a merge done on
+# pilot output alone would silently evaluate a partial set under the final id.
+#
+# Scale: ~11.2k kept scenarios; a 2,159-scenario base eval takes ~1h on 1 GPU,
+# so budget ~6h; walltime 1-00:00:00 for headroom. The eval is one task (one CSV),
+# so it cannot be fanned out without splitting the CSV.
+#
+# Submit (after merge): valuegen gt run -c configs/experiments/ground_truth/const_v3_base_eval.yaml
+# Dry run:              valuegen gt run -c configs/experiments/ground_truth/const_v3_base_eval.yaml --dry-run
+
+name: const_v3_base_eval
+intervention:
+  method: none
+  value_set: constitution_tenets_v3
+  models: [olmo7b_sft]
+evaluation:
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  temperature: 0
+  judge: {model: Qwen/Qwen3.6-27B, serve: local, gpus: 8, mem: 400G, env: eval_api}
+  resources: {time: "1-00:00:00", mem: 64G, gpus: 1}
+  matrices:
+    variants: [likert_normalized, choice_normalized, likert_raw, choice_raw]
+    cols: all

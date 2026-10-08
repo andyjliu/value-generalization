@@ -1,0 +1,150 @@
+# Cluster + environment configuration — TEMPLATE.
+#
+# Nothing under src/valuegen hardcodes any machine facts (paths, SLURM
+# partition/QOS names, node excludes, ...); they all come from this file.
+# `scripts/setup_env.sh` copies this to `configs/cluster.yaml` (gitignored —
+# it's specific to your machine, not something to commit) if that file is
+# missing. Every value below marked CHANGE THIS needs a real value before
+# anything that submits SLURM jobs (`gt run`, `predict --build`) will work.
+# You can also point valuegen at a differently-named/located file with
+# `--cluster <path>` or the `VALUEGEN_CLUSTER` env var, instead of editing
+# this one in place — useful if you run on more than one cluster.
+#
+# If you have no SLURM at all: the `paths:` block still needs to resolve (it
+# backs local reads/writes — `data/`, checkpoints), but `slurm:` is inert.
+# Tests, and `valuegen analyze` against artifacts you already have, don't
+# need SLURM; `gt run`/`predict --build` do.
+
+# uv venvs (built by `scripts/setup_env.sh`); repo-relative paths are fine.
+# `ws_train` is the one env that can't merge into `default`: weight-steering
+# adapter training runs axolotl, which `==`-pins torch/transformers/peft to
+# versions that conflict with everything else. Only needed if you're
+# retraining weight-steering LoRA adapters from scratch — see README.
+envs:
+  default: .venvs/core
+  eval_api: .venvs/core
+  persona: .venvs/core
+  weight_steering: .venvs/core
+  ws_train: .venvs/ws-train
+  msm: .venvs/msm
+
+paths:
+  # CHANGE THIS — absolute path to your clone of this repo.
+  repo: /path/to/value-generalization
+  # CHANGE THIS — a filesystem with room for DPO checkpoints and, if you use
+  # the weight-steering predictor, its LoRA adapters (~85 GB) and task-vector
+  # cache (~25-29 GB per value trained). Not `data/`, which is usually on a
+  # small home quota. Those are 7-8B figures; at 30B scale the cache is
+  # 106-129 GB per value (7-8 TB for 66 values) and the adapters 1-2 TB per
+  # model (paper/regenerate/rq1.sh).
+  finetune_root: /path/to/large/data/root/conflictscope-finetune
+  # A second, older root to fall back to for pre-existing checkpoints. Fine
+  # to point this at the same place as finetune_root if you have only one.
+  finetune_root_legacy: /path/to/large/data/root/conflictscope-finetune
+  data: data
+  slurm_logs: slurm_logs
+
+slurm:
+  mail_type: END
+  # CHANGE THIS.
+  mail_user: you@example.com
+  # CHANGE THIS — your cluster's GPU type (used in job comments/logging, not
+  # a scheduler constraint by itself).
+  gpu_type: A100
+  # Concurrent-GPU cap under your QOS; slurm.py throttles job arrays to it.
+  # CHANGE THIS to whatever your account/QOS actually allows.
+  max_concurrent_gpus: 8
+  default_time: 1-00:00:00
+  default_mem: 64G
+  # CHANGE THESE — partition/QOS names are cluster-specific. `cpu_partition`/
+  # `cpu_qos` are used for CPU-only stages (e.g. label-oracle serving,
+  # scenario generation); everything else uses the default partition/QOS
+  # your account resolves to.
+  cpu_partition: cpu
+  cpu_qos: cpu_qos
+  # If every partition on your cluster requires >=1 GPU, point cpu_partition
+  # at a GPU partition and set this to 1: CPU stages then request that many
+  # untyped GPUs and are throttled against max_concurrent_gpus. 0 = pure CPU.
+  cpu_stage_gpus: 0
+
+  # OPTIONAL — partition/QOS for GPU jobs (training, eval, `valuegen smoke`).
+  # Unset → GPU jobs name neither and land on your cluster's default
+  # partition. SET BOTH if that default rejects them (sbatch: "Invalid qos
+  # specification") or is preemptible and you have a non-preemptible one.
+  # gpu_partition: gpu
+  # gpu_qos: gpu_qos
+  # OPTIONAL — emitted as --account on every job; needed when a QOS is tied
+  # to a specific grant/account.
+  # account: my_account
+
+  # OPTIONAL — where hand-written poll-only controllers (scripts/*.sbatch) run.
+  # Unset → cpu_partition/cpu_qos. A preemptible partition with a long walltime
+  # suits them, since they resume by resubmit.
+  # controller_partition: preempt
+  # controller_qos: preempt_qos
+
+  # OPTIONAL — a second GPU partition/QOS for short, idempotent array stages
+  # (see Stage.array_partition). Leave unset if your cluster has no such pool;
+  # stages that ask for it then fall back to the default partition. Such a QOS
+  # is often preemptible, which is why it is opt-in per stage rather than
+  # global. Leave it unset for 30B-scale runs: a preempted task reloads the
+  # model, a 10-40 min restart.
+  # array_partition: array
+  # array_qos: array_qos
+
+  # OPTIONAL — export NCCL_P2P_DISABLE=1 / NCCL_IB_DISABLE=1 on every
+  # multi-GPU stage. Only for clusters where GPU peer-to-peer is actually
+  # broken (the original A6000 workaround); on NVLink nodes these flags force
+  # collectives through host memory and roughly halve FSDP training and
+  # tensor-parallel serving throughput, so the default is off. Individual
+  # stages can also opt in via Stage.nccl_conservative.
+  # nccl_conservative: true
+
+  # ── Exclusive-node clusters ──────────────────────────────────────────────
+  # Defaults below reproduce the classic GRES-scheduled behaviour; set them
+  # for clusters that hand out whole nodes (OverSubscribe=EXCLUSIVE). The AMD
+  # AUP cluster needs all of them: it configures no GRES (`--gres` is
+  # rejected), advertises RealMemory=1 (`--mem` is rejected), gives every job
+  # a whole 8-GPU node, and a submit filter enforces walltime caps that
+  # sinfo does not show.
+  #
+  # Drop the --gres / --mem directives entirely.
+  # request_gres: false
+  # request_mem: false
+  # GPUs per node. When set, a multi-task single-GPU stage packs this many
+  # tasks per array element (GNU parallel, one GPU each via
+  # CUDA/HIP_VISIBLE_DEVICES) instead of idling N-1 GPUs per element, and
+  # the throttle counts whole nodes: max_concurrent_gpus = nodes x this.
+  # gpus_per_node: 8
+  # Walltime cap per partition. A stage asking for more is clamped to the
+  # cap and its retry budget scaled by ceil(requested / cap), so resumable
+  # stages (checkpointed label shards, a revived server) keep their wall
+  # budget across resubmits. Stages that must finish in one job need a time
+  # within the cap.
+  # partition_max_time:
+  #   gpu: "12:00:00"
+  #   cpu: "12:00:00"
+
+  # Nodes to always pass as --exclude (pathologically slow, or GPUs held by
+  # foreign processes). Empty by default — these are specific to whatever
+  # cluster produced them; add your own as you find them, with a comment
+  # saying why.
+  exclude: []
+
+# OPTIONAL — remote checkpoint storage on GCS, for clusters whose shared
+# filesystem can't hold the merged DPO checkpoints (one full model copy per
+# (model, value) cell). Absent, or enabled: false, means every checkpoint
+# stays on finetune_root exactly as before. When enabled: a training task
+# pushes its merged dir to {bucket}/merged/ right after the merge and deletes
+# the local copy (leaving a small `<merged>.gcs` marker recording the URI),
+# and eval tasks stage remote checkpoints back into stage_dir — node-local
+# scratch on compute nodes — at run time. Requires `gcloud` on PATH and a
+# one-time `gcloud auth login --update-adc` (ADC creds live in your shared
+# home, so compute nodes inherit them).
+# gcs:
+#   enabled: true
+#   # Bucket plus prefix, no trailing slash.
+#   bucket: gs://<your-bucket>/valuegen
+#   # Node-local scratch for eval-time pulls (re-downloaded per node; kept
+#   # deterministic so a warm copy makes the pull a no-op).
+#   stage_dir: /mnt/localssd/<you>/valuegen

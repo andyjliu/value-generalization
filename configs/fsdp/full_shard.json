@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "transformer_layer_cls_to_wrap": ["Qwen3DecoderLayer"],
+  "backward_prefetch": "BACKWARD_PRE",
+  "forward_prefetch": false,
+  "limit_all_gathers": true,
+  "use_orig_params": true,
+  "sync_module_states": true,
+  "state_dict_type": "FULL_STATE_DICT"
+}

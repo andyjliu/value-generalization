@@ -1,0 +1,221 @@
+{
+ "frame": {
+  "rows": 49,
+  "cols": 66,
+  "n_cells": 3185
+ },
+ "rho": {
+  "olmo_sft|persona|neutral": {
+   "rho": 0.4619784697375034,
+   "lo": 0.38194262502380155,
+   "hi": 0.5289740960547044
+  },
+  "olmo_sft|persona|base_reads_neutral": {
+   "rho": 0.4560933013319365,
+   "lo": 0.36918713961442495,
+   "hi": 0.5266812003218743
+  },
+  "olmo_sft|persona|base_reads_base": {
+   "rho": 0.4762852239877466,
+   "lo": 0.40902559945157707,
+   "hi": 0.5388275935733671
+  },
+  "olmo_sft|grad_proj|neutral": {
+   "rho": 0.47350966505943565,
+   "lo": 0.3953324502853272,
+   "hi": 0.5393398965557964
+  },
+  "olmo_sft|grad_proj|base_reads_neutral": {
+   "rho": 0.44731607416020625,
+   "lo": 0.37374059994924097,
+   "hi": 0.5087507986056062
+  },
+  "olmo_sft|grad_proj|base_reads_base": {
+   "rho": 0.38924739843626566,
+   "lo": 0.3237889700643859,
+   "hi": 0.44855165691691995
+  },
+  "qwen_sft|persona|neutral": {
+   "rho": 0.3470351713148318,
+   "lo": 0.26884678047312993,
+   "hi": 0.4157369280867616
+  },
+  "qwen_sft|persona|base_reads_neutral": {
+   "rho": 0.34077175888840155,
+   "lo": 0.2616160390619621,
+   "hi": 0.41177224040161536
+  },
+  "qwen_sft|persona|base_reads_base": {
+   "rho": 0.40960217649365455,
+   "lo": 0.34357246790988355,
+   "hi": 0.47041772498138784
+  },
+  "qwen_sft|grad_proj|neutral": {
+   "rho": 0.37200233497142193,
+   "lo": 0.30721508634644873,
+   "hi": 0.4342193795955382
+  },
+  "qwen_sft|grad_proj|base_reads_neutral": {
+   "rho": 0.356477292293339,
+   "lo": 0.288283449541774,
+   "hi": 0.4253910482707919
+  },
+  "qwen_sft|grad_proj|base_reads_base": {
+   "rho": 0.5022330508912408,
+   "lo": 0.4367476671653837,
+   "hi": 0.5614109134212729
+  }
+ },
+ "paired": {
+  "olmo_sft|persona|reader": {
+   "a": "base_reads_neutral",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.4560933013319365,
+   "corr_b": 0.4619784697375034,
+   "diff": -0.0058851684055669096,
+   "ci_lo": -0.011199605795450892,
+   "ci_hi": -0.00075904789320612,
+   "p": 0.023
+  },
+  "olmo_sft|persona|author": {
+   "a": "base_reads_base",
+   "b": "base_reads_neutral",
+   "n": 3185.0,
+   "corr_a": 0.4762852239877466,
+   "corr_b": 0.4560933013319365,
+   "diff": 0.0201919226558101,
+   "ci_lo": 0.001959883471314171,
+   "ci_hi": 0.0378510681285596,
+   "p": 0.03
+  },
+  "olmo_sft|persona|total": {
+   "a": "base_reads_base",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.4762852239877466,
+   "corr_b": 0.4619784697375034,
+   "diff": 0.014306754250243192,
+   "ci_lo": -0.00484335727550448,
+   "ci_hi": 0.032229354375289745,
+   "p": 0.123
+  },
+  "olmo_sft|grad_proj|reader": {
+   "a": "base_reads_neutral",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.44731607416020625,
+   "corr_b": 0.47350966505943565,
+   "diff": -0.026193590899229402,
+   "ci_lo": -0.03992044381977469,
+   "ci_hi": -0.012421373025830067,
+   "p": 0.001
+  },
+  "olmo_sft|grad_proj|author": {
+   "a": "base_reads_base",
+   "b": "base_reads_neutral",
+   "n": 3185.0,
+   "corr_a": 0.38924739843626566,
+   "corr_b": 0.44731607416020625,
+   "diff": -0.05806867572394059,
+   "ci_lo": -0.08627889955627666,
+   "ci_hi": -0.03293689795777967,
+   "p": 0.0
+  },
+  "olmo_sft|grad_proj|total": {
+   "a": "base_reads_base",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.38924739843626566,
+   "corr_b": 0.47350966505943565,
+   "diff": -0.08426226662316999,
+   "ci_lo": -0.11050348365968819,
+   "ci_hi": -0.05990931721638834,
+   "p": 0.0
+  },
+  "qwen_sft|persona|reader": {
+   "a": "base_reads_neutral",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.34077175888840155,
+   "corr_b": 0.3470351713148318,
+   "diff": -0.006263412426430248,
+   "ci_lo": -0.01013177842120681,
+   "ci_hi": -0.0023640362860022908,
+   "p": 0.001
+  },
+  "qwen_sft|persona|author": {
+   "a": "base_reads_base",
+   "b": "base_reads_neutral",
+   "n": 3185.0,
+   "corr_a": 0.40960217649365455,
+   "corr_b": 0.34077175888840155,
+   "diff": 0.06883041760525299,
+   "ci_lo": 0.050166491207047935,
+   "ci_hi": 0.08689179114116041,
+   "p": 0.0
+  },
+  "qwen_sft|persona|total": {
+   "a": "base_reads_base",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.40960217649365455,
+   "corr_b": 0.3470351713148318,
+   "diff": 0.06256700517882274,
+   "ci_lo": 0.044008679244296904,
+   "ci_hi": 0.08108795517027811,
+   "p": 0.0
+  },
+  "qwen_sft|grad_proj|reader": {
+   "a": "base_reads_neutral",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.356477292293339,
+   "corr_b": 0.37200233497142193,
+   "diff": -0.015525042678082912,
+   "ci_lo": -0.03812599743240667,
+   "ci_hi": 0.008813279315919697,
+   "p": 0.212
+  },
+  "qwen_sft|grad_proj|author": {
+   "a": "base_reads_base",
+   "b": "base_reads_neutral",
+   "n": 3185.0,
+   "corr_a": 0.5022330508912408,
+   "corr_b": 0.356477292293339,
+   "diff": 0.1457557585979018,
+   "ci_lo": 0.11729870965435951,
+   "ci_hi": 0.17216278496925413,
+   "p": 0.0
+  },
+  "qwen_sft|grad_proj|total": {
+   "a": "base_reads_base",
+   "b": "neutral",
+   "n": 3185.0,
+   "corr_a": 0.5022330508912408,
+   "corr_b": 0.37200233497142193,
+   "diff": 0.13023071591981888,
+   "ci_lo": 0.10013469385575391,
+   "ci_hi": 0.16010364626629664,
+   "p": 0.0
+  }
+ },
+ "ceiling": {
+  "olmo_sft": 0.8725252551991807,
+  "qwen_sft": 0.8684473141459653
+ },
+ "paths": {
+  "olmo_sft|persona|neutral": "data/similarity/persona/default_llm/neutral-sft-v3-olmo3-7b/neutral-sft-v3-olmo3-7b-9e781b0f5a83/persona_response_avg_diff_L16.npy",
+  "olmo_sft|grad_proj|neutral": "data/similarity/grad_proj/default_llm/neutral-sft-v3-olmo3-7b/neutral-sft-v3-olmo3-7b-9e781b0f5a83/gradproj_dpoinit_respavg_native_L16.npy",
+  "olmo_sft|persona|base_reads_neutral": "data/similarity/persona/default_llm/Olmo-3-1025-7B/neutral-sft-v3-olmo3-7b-9e781b0f5a83/persona_response_avg_diff_urial0_L16.npy",
+  "olmo_sft|grad_proj|base_reads_neutral": "data/similarity/grad_proj/default_llm/Olmo-3-1025-7B/neutral-sft-v3-olmo3-7b-9e781b0f5a83/gradproj_dpoinit_respavg_urial0_L16.npy",
+  "olmo_sft|persona|base_reads_base": "data/similarity/persona/default_llm/Olmo-3-1025-7B/Olmo-3-1025-7B-f22fe71e8417/persona_response_avg_diff_urial0_L16.npy",
+  "olmo_sft|grad_proj|base_reads_base": "data/similarity/grad_proj/default_llm/Olmo-3-1025-7B/Olmo-3-1025-7B-f22fe71e8417/gradproj_dpoinit_respavg_urial0_L16.npy",
+  "qwen_sft|persona|neutral": "data/similarity/persona/default_llm/neutral-sft-v3-qwen3-8b/neutral-sft-v3-qwen3-8b-5a2708f91afb/persona_response_avg_diff_L18.npy",
+  "qwen_sft|grad_proj|neutral": "data/similarity/grad_proj/default_llm/neutral-sft-v3-qwen3-8b/neutral-sft-v3-qwen3-8b-5a2708f91afb/gradproj_dpoinit_respavg_L18.npy",
+  "qwen_sft|persona|base_reads_neutral": "data/similarity/persona/default_llm/Qwen3-8B-Base/neutral-sft-v3-qwen3-8b-5a2708f91afb/persona_response_avg_diff_urial0_L18.npy",
+  "qwen_sft|grad_proj|base_reads_neutral": "data/similarity/grad_proj/default_llm/Qwen3-8B-Base/neutral-sft-v3-qwen3-8b-5a2708f91afb/gradproj_dpoinit_respavg_urial0_L18.npy",
+  "qwen_sft|persona|base_reads_base": "data/similarity/persona/default_llm/Qwen3-8B-Base/Qwen3-8B-Base-d16065ac5dae/persona_response_avg_diff_urial0_L18.npy",
+  "qwen_sft|grad_proj|base_reads_base": "data/similarity/grad_proj/default_llm/Qwen3-8B-Base/Qwen3-8B-Base-d16065ac5dae/gradproj_dpoinit_respavg_urial0_L18.npy"
+ }
+}

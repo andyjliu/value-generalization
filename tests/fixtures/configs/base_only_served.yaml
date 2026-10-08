@@ -1,0 +1,20 @@
+# Test fixture: a base-model-only eval (method none) against a served
+# assistant. Shapes only.
+name: base_only_served
+intervention:
+  method: none
+  value_set: constitution_tenets_v3
+  models:
+    olmo7b_sft: allenai/OLMo-2-1124-7B-SFT
+evaluation:
+  method: conflictscope
+  scenarios: data/scenarios/const_v3_cs
+  mode: interactive
+  cache: true
+  filter: true
+  assistant: {serve: local, gpus: 1, mem: 48G}
+  judge: {model: Qwen/Qwen3.6-27B, serve: local, gpus: 2, mem: 96G, env: eval_api}
+  resources: {time: "1-00:00:00", mem: 32G}
+  matrices:
+    variants: [likert_normalized, choice_normalized]
+    cols: all

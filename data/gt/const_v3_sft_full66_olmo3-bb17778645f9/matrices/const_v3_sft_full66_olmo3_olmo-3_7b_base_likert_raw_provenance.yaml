@@ -1,0 +1,89 @@
+matrix: const_v3_sft_full66_olmo3_olmo-3_7b_base_likert_raw
+date: '2026-09-09'
+source_csvs:
+- data/gt/base_evals/conflictscope-93ad0f27231c/Olmo-3-1025-7B_urial0_base.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_hard_constraint_fidelity.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_honest_creative_feedback.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_correcting_counterproductive_advice.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_resisting_crowd_agreement.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_calibrated_uncertainty.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_accurate_overall_impressions.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_respecting_rational_agency.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_balanced_ethical_perspectives.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_disagreeing_with_experts.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_honest_uncomfortable_truths.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_performative_advocacy.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_transparent_withholding.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_substantive_medical_guidance.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_substantive_legal_help.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_context_sensitive_help.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_scope_limited_code_fixes.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_plausible_interpretation.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_proactive_issue_identification.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_respecting_user_autonomy.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_discourage_excessive_reliance.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_avoid_unlikely_harm_refusals.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_no_wishy_washy_responses.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_transparent_limitations.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_dont_assume_malicious_intent.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_calibrated_caveats.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_non_condescending_engagement.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_constructive_hypothetical_engagement.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_dark_fiction_engagement.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_no_preachy_tone.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_no_unnecessary_padding.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_political_reticence.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_personal_autonomy_risky_choices.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_harm_reduction_guidance.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_current_guidance_over_extrapolation.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_weighting_recoverability.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_novel_situation_caution.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_preserving_checks_balances.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_power_legitimacy.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_fostering_independent_judgment.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_political_factual_accuracy.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_steelman_multiple_views.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_neutral_terminology.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_empowering_reasoning.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_equanimity_under_existential_challenges.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_metaphysical_uncertainty_commitment.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_true_self_integrity.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_mature_error_handling.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_examining_human_existential_frames.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_conscientious_non_sabotage.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_conventional_compliance.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_upfront_concerns.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_adjusting_for_minors.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_embedded_instruction_boundary.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_source_quality_calibration.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_care_for_non_principals.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_avoiding_overclarification.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_transparency_about_nature.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_avoid_self_destructive_enabling.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_mental_health_awareness.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_addressing_underlying_distress.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_non_amplifying_emotional_validation.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_direct_crisis_response.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_substantive_professional_guidance.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_answering_within_frameworks.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_user_default_adjustment.csv
+- data/gt/const_v3_sft_full66_olmo3-bb17778645f9/model_evals/olmo-3_7b_base_user_activated_communication.csv
+base_model: allenai/Olmo-3-1025-7B
+judge: Qwen/Qwen3.6-27B
+scenario_dir: data/scenarios/const_v3_cs
+git:
+  valuegen: f722abf63b9cf64265ec606477b79fc48319a7af
+  external/conflictscope: d9a0671c22bade9ee610f76c2829f24430b9e500
+  external/model_spec_midtraining: 1ea781a03069a52cf7e8a5e645bd14e9c7a6e1c0
+  external/persona_vectors: 64d3d9a04f7600ff60ae10ead0b5c8c879cb2967
+  external/weight-steering: d9e38b6247718206ce9b1cdfd4299e00a486abb8
+experiment_config: configs/experiments/const_v3_sft_full66_olmo3.yaml
+intervention_id: const_v3_sft_full66_olmo3-6b6c3187c6ba
+reference_model: allenai/Olmo-3-1025-7B
+base_scaffold: urial0
+control_tag: null
+denominator: raw base allenai/Olmo-3-1025-7B under urial0 scaffold (data/gt/base_evals/conflictscope-93ad0f27231c/Olmo-3-1025-7B_urial0_base.csv)
+gt_id: const_v3_sft_full66_olmo3-bb17778645f9
+legacy_ids:
+- const_v3_sft_full66_olmo3-1f6a32e2c24b
+legacy_ids_note: GT run ID when these matrices were built; the config's evaluation block has since replaced the neutral-SFT reference_models with the urial0 raw-base scaffold these matrices already use.

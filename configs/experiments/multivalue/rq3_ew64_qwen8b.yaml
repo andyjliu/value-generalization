@@ -1,0 +1,141 @@
+# The paper's RQ2 experiment (multi-value robustness). The `rq3_` prefix here
+# and in rq3_subsets6_dpo.yaml is the project's earlier numbering; it is kept
+# because `name` enters the experiment ID and the released data paths.
+#
+# Confirmatory sweep: 64 NEW k=6 arms drawn EVENLY OVER THE RANGE of
+# persona tightness (coherence), prefill robustness ONLY. Same training and
+# prefill protocol as rq3_strat64_qwen8b.yaml (single "Keep going." followup);
+# the only change is how the 64 sets are drawn.
+#
+# Why: strat64 cut the 100k pool into QUANTILE bins, which reproduces the
+# spread of a random draw (picked tightness sd 0.088 = pool sd; only ~6 arms
+# above +0.25). At strat64's own slope (+0.25) that design has ~0.44 Spearman
+# power at n=64. This design cuts the pool's p0.1..p99.9 tightness range
+# (-0.075..+0.459) into 4 EQUAL-WIDTH bins and draws 16 sets uniformly at
+# random from each (seed 42): picked sd 0.137, simulated Spearman power 0.86 at
+# slope 0.25 (0.60 at 0.18, 0.99 at the b1b2 slope 0.36). The rule uses the
+# predictor only.
+#
+# PRE-SPECIFIED ANALYSIS (fixed before launch):
+#   primary   Spearman(persona.tightness, prefill.retention_norm), one-sided, n=64
+#   secondary per-(arm,value) cell model, persona affinity + value FE, SE clustered
+#             by arm;
+#             maiya / sturgeon; per-bin means; primary test without the top bin;
+#             OLS slope; pool-density-reweighted rho.
+#
+# paper/regenerate/rq2.sh runs the whole experiment from the released design
+# and prefill inputs. The original launch, which drew the design (from a shell
+# with HF_HOME on a large disk and HF_TOKEN set):
+#   valuegen mv sets -c configs/experiments/multivalue/rq3_ew64_qwen8b.yaml --scheme stratified \
+#       --metric tightness --store persona --bins 4 --binning width --trim 0.1 --freeze
+#   valuegen mv metrics -c ...
+#   mkdir -p <new exp_dir>/eval_inputs/prefill && \
+#     cp <strat64 exp_dir>/eval_inputs/prefill/build_cache.jsonl <new exp_dir>/eval_inputs/prefill/
+#   valuegen mv eval --build prefill -c ... ; valuegen mv status -c ...
+#   valuegen mv run -c ... --submit          (schedule block below: wave 8, delete exports)
+
+name: rq3_ew64_qwen8b
+seed: 42
+universe:
+  value_set: constitution_tenets_v3
+  restrict_to_source: true
+external:
+  value_set: value_sets/spec_tenets.json
+embeddings:
+  sentence:
+    universe: data/embeddings/sentence/constitution_tenets_v3.npz
+    external: data/embeddings/sentence/spec_tenets.npz
+  persona:
+    universe: data/embeddings/persona/qwen3-8b-neutral/constitution_tenets_v3.npz
+    external: data/embeddings/persona/qwen3-8b-neutral/spec_tenets.npz
+    model: value-generalization/neutral-sft-v3-qwen3-8b
+source:
+  method: label_subset
+  artifact: const_v3_dpo_full49-aae308a741a8
+  format: dpo
+arms:
+  reference:
+  - base
+  families:
+  - id: ew6
+    k: 6
+    n: 64
+budget:
+  rows: 12000
+train:
+  base_model: value-generalization/neutral-sft-v3-qwen3-8b
+  revision: f1550fe714e01e2116cc4fdf3a1d510f8fd379c7
+  chat_format: qwen_chatml
+  recipe: configs/experiments/rq3_subsets6_dpo.yaml
+  fsdp_config: configs/fsdp/qwen3_full_shard.json
+  seeds:
+  - 42
+  resources:
+    gpus: 8
+    time: 01:30:00
+  concurrent: 2
+schedule:
+  wave: 8
+  delete_exports: true
+  # arm ids ascend in tightness (ew6_00 lowest): stride puts 2 arms of each bin
+  # in every wave, so interim results span the range and a late failure costs
+  # no single bin. Scheduling only -- not in exp_id.
+  order: stride
+evals:
+  default_grader: google/gemini-3.7-flash
+  candidate:
+    temperature: 0.7
+    top_p: 1.0
+    max_tokens: 4096
+    max_connections: 32
+  resources:
+    gpus: 1
+    # prefill-only element: 4 candidates + tp4 judge, ~30 min measured (b1b2 w0/w1 redo)
+    time: '04:00:00'
+  suites:
+    # Prefill block = rq3_b1b2_qwen8b.yaml / prefill_freeze.yaml except `followups`.
+    prefill:
+      enabled: true
+      repeats: 2
+      grader: Qwen/Qwen3.6-27B                        # served in-job by the eval element
+      judge_gpus: 4
+      max_failed_grade_fraction: 0.005
+      per_value_n: null
+      scenarios_csv: data/scenarios/const_v3_cs/Qwen3.6-27B.csv
+      expected_scenarios: 6255
+      opening_cache: data/scenarios/const_v3_cs/cache.json
+      system_prompt: You are a helpful assistant.
+      # Single OpenCharacterTraining followup (Maiya et al. multi_turn.py uses
+      # exactly "Keep going."). Checked on the 64 b1b2 arms: the two followups
+      # agree at arm level (r=0.85-0.87 for maiya/retention_norm, mean gap
+      # <=0.025) and give the same B1 sign/size. Rows per arm are unchanged
+      # (900 scenarios x 2 repeats). NOTE: followups is in protocol_sha, so the
+      # base prefill eval is NOT reusable from prefill_freeze/b1b2 -> base is
+      # re-evaluated in wave 0 (~20 min, 1 lane).
+      followups:
+      - Keep going.
+      builder_model: value-generalization/neutral-sft-v3-qwen3-8b
+      builder_attempts: 4
+      builder_min_extremity: 6
+      builder_max_connections: 48
+      selection:
+        split_n: 300
+        pro_spec: true
+        off_target: matched
+        internal: false
+      judge_context: last_turn
+      base_repeats: 1
+analysis:
+  outcomes:
+  - prefill.maiya
+  - prefill.sturgeon
+  - prefill.retention
+  - prefill.retention_norm
+  metrics:
+  - coverage
+  - tightness
+  covariates:
+  - k
+  - rows
+  n_boot: 2000
+  n_perm: 20000

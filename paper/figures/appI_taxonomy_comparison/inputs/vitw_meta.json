@@ -1,0 +1,2130 @@
+{
+  "narrative_coherence_and_consistency": {
+    "cluster_id": "ai_values:l1:9ad47abe-2e5a-452e-8f24-1dd9cdea6e84",
+    "l1": "Narrative coherence and consistency",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 0.233,
+    "model_name": "storytelling_coherence"
+  },
+  "communicative_clarity_and_precision": {
+    "cluster_id": "ai_values:l1:67b8fedb-25e6-4a2e-a317-e8f053b61771",
+    "l1": "Communicative clarity and precision",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 4.319,
+    "model_name": "clear_precise_communication"
+  },
+  "intellectual_clarity": {
+    "cluster_id": "ai_values:l1:f4adc99b-9e01-460c-9db1-415f4524afc3",
+    "l1": "Intellectual clarity",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 0.025,
+    "model_name": "intellectual_clarity"
+  },
+  "technical_precision_across_disciplines": {
+    "cluster_id": "ai_values:l1:a1c400ae-1d57-4618-b067-4f02dc4154d0",
+    "l1": "Technical precision across disciplines",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 1.189,
+    "model_name": "technical_precision"
+  },
+  "linguistic_precision": {
+    "cluster_id": "ai_values:l1:72b41673-e8d3-4622-b8d8-3071a1765b58",
+    "l1": "Linguistic precision",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 0.985,
+    "model_name": "linguistic_precision"
+  },
+  "information_fidelity": {
+    "cluster_id": "ai_values:l1:1c541745-951a-4000-9382-0f9b78d67631",
+    "l1": "Information fidelity",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 0.012,
+    "model_name": "information_fidelity"
+  },
+  "logical_coherence_and_consistency": {
+    "cluster_id": "ai_values:l1:311a2643-8151-41ba-9f96-af6b303f45db",
+    "l1": "Logical coherence and consistency",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 0.054,
+    "model_name": "logical_coherence"
+  },
+  "analytical_rigor_and_precision": {
+    "cluster_id": "ai_values:l1:2135dab7-10b8-4afc-a567-c51211e01528",
+    "l1": "Analytical rigor and precision",
+    "l2": "Clarity and precision",
+    "l3": "Epistemic values",
+    "freq": 1.652,
+    "model_name": "analytical_rigor"
+  },
+  "trust_creation_and_maintenance": {
+    "cluster_id": "ai_values:l1:8ac3c5d2-1418-4b54-a664-0dfe2e492765",
+    "l1": "Trust creation and maintenance",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.104,
+    "model_name": "trust_building"
+  },
+  "leadership_qualities": {
+    "cluster_id": "ai_values:l1:3044bb81-5a2c-40ec-a3d6-1f74b26d3603",
+    "l1": "Leadership qualities",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.067,
+    "model_name": "leadership_qualities"
+  },
+  "constructive_dialogue": {
+    "cluster_id": "ai_values:l1:4b80ccf4-8bfc-47a1-bd79-fb65898fee8c",
+    "l1": "Constructive dialogue",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.384,
+    "model_name": "constructive_dialogue"
+  },
+  "respect_and_dignity": {
+    "cluster_id": "ai_values:l1:9c6e181b-354f-4166-88d9-97d8ccfe58ab",
+    "l1": "Respect and dignity",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.436,
+    "model_name": "respect_and_dignity"
+  },
+  "moral_and_ethical_principles": {
+    "cluster_id": "ai_values:l1:57007123-db64-4398-902a-7e29d975689f",
+    "l1": "Moral and ethical principles",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.078,
+    "model_name": "moral_ethical_guidance"
+  },
+  "balanced_and_fair_discourse": {
+    "cluster_id": "ai_values:l1:5b423546-0a32-4aff-8bcc-aaf47e304933",
+    "l1": "Balanced and fair discourse",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.159,
+    "model_name": "balanced_fair_discourse"
+  },
+  "peace_and_nonviolence": {
+    "cluster_id": "ai_values:l1:3d28b4eb-76e9-4021-982d-cbcc7f3471db",
+    "l1": "Peace and nonviolence",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.047,
+    "model_name": "peace_nonviolence"
+  },
+  "professional_ethics_and_integrity": {
+    "cluster_id": "ai_values:l1:95817815-a64f-4f10-990d-5f9f3a5269cb",
+    "l1": "Professional ethics and integrity",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.42,
+    "model_name": "professional_integrity"
+  },
+  "transparent_and_responsible_communication": {
+    "cluster_id": "ai_values:l1:331ac2bf-40a2-408b-967f-dfb76ef6799a",
+    "l1": "Transparent and responsible communication",
+    "l2": "Ethical interaction",
+    "l3": "Social values",
+    "freq": 0.069,
+    "model_name": "transparent_responsible_communication"
+  },
+  "social_etiquette": {
+    "cluster_id": "ai_values:l1:d1da0655-5bc9-45b1-896a-3e3ad4434ba5",
+    "l1": "Social etiquette",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.294,
+    "model_name": "social_etiquette"
+  },
+  "balancing_innovation_and_tradition": {
+    "cluster_id": "ai_values:l1:f0991acb-46be-4e7e-a4f1-ccb8e4822f8e",
+    "l1": "Balancing innovation and tradition",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.015,
+    "model_name": "balancing_innovation_tradition"
+  },
+  "religious_respect_and_accommodation": {
+    "cluster_id": "ai_values:l1:351fdef4-062c-40c0-a002-8f768f7d7417",
+    "l1": "Religious respect and accommodation",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.143,
+    "model_name": "religious_respect_accommodation"
+  },
+  "linguistic_respect_and_inclusivity": {
+    "cluster_id": "ai_values:l1:9c312301-a330-4d6e-89f2-1542d81d2a44",
+    "l1": "Linguistic respect and inclusivity",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.019,
+    "model_name": "linguistic_inclusivity"
+  },
+  "indigenous_rights_and_sovereignty": {
+    "cluster_id": "ai_values:l1:c610f18c-b439-4df1-9c6c-c7c43e8e16ce",
+    "l1": "Indigenous rights and sovereignty",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.003,
+    "model_name": "indigenous_rights_sovereignty"
+  },
+  "social_constraints_and_permissiveness": {
+    "cluster_id": "ai_values:l1:39cf7b7e-85cd-4a8c-a310-9e75682be5bb",
+    "l1": "Social constraints and permissiveness",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.008,
+    "model_name": "social_permissiveness"
+  },
+  "cultural_understanding_and_respect": {
+    "cluster_id": "ai_values:l1:f5a4b3fa-d680-4d7c-a3cc-317b43b9b465",
+    "l1": "Cultural understanding and respect",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.951,
+    "model_name": "cultural_understanding_respect"
+  },
+  "cultural_and_social_adaptability": {
+    "cluster_id": "ai_values:l1:f60c65b1-aa4b-48ac-ab59-8259e5864da1",
+    "l1": "Cultural and social adaptability",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.034,
+    "model_name": "cultural_social_adaptability"
+  },
+  "traditional_and_cultural_reverence": {
+    "cluster_id": "ai_values:l1:f70ae3d2-3443-46e0-85f5-23d1d7b92926",
+    "l1": "Traditional and cultural reverence",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.069,
+    "model_name": "traditional_cultural_reverence"
+  },
+  "diplomatic_communication": {
+    "cluster_id": "ai_values:l1:3dbd88b4-79ea-4557-8585-d1a8e405cfae",
+    "l1": "Diplomatic communication",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.207,
+    "model_name": "diplomatic_communication"
+  },
+  "cultural_diversity_and_inclusion": {
+    "cluster_id": "ai_values:l1:3af0034d-00d6-46ea-a114-03b4b893e197",
+    "l1": "Cultural diversity and inclusion",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.076,
+    "model_name": "cultural_inclusion"
+  },
+  "cultural_heritage_and_tradition": {
+    "cluster_id": "ai_values:l1:5b702888-4048-4aed-a2a5-632a0ce534f3",
+    "l1": "Cultural heritage and tradition",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.242,
+    "model_name": "cultural_heritage"
+  },
+  "formality_and_deference": {
+    "cluster_id": "ai_values:l1:68e12a64-359e-4f87-a2b4-580b23817d17",
+    "l1": "Formality and deference",
+    "l2": "Cultural respect and tradition",
+    "l3": "Social values",
+    "freq": 0.031,
+    "model_name": "formality_deference"
+  },
+  "effective_teaching_and_learning": {
+    "cluster_id": "ai_values:l1:ee01dda9-55c5-44ed-8aea-b7101f5aa61f",
+    "l1": "Effective teaching and learning",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 1.074,
+    "model_name": "effective_teaching"
+  },
+  "sound_scientific_methodology": {
+    "cluster_id": "ai_values:l1:45b47647-f27b-49f1-b4e0-1a1e279c6c24",
+    "l1": "Sound scientific methodology",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 0.295,
+    "model_name": "sound_scientific_methodology"
+  },
+  "structuredness_and_systematicity": {
+    "cluster_id": "ai_values:l1:da6483ae-f6c5-486b-8419-0a544988833c",
+    "l1": "Structuredness and systematicity",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 1.537,
+    "model_name": "systematic_analysis"
+  },
+  "narrative_and_literary_craftsmanship": {
+    "cluster_id": "ai_values:l1:5557d9b9-cf00-43b2-820d-0d2ef3c16bb1",
+    "l1": "Narrative and literary craftsmanship",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 0.289,
+    "model_name": "narrative_literary_craft"
+  },
+  "methodical_rigor": {
+    "cluster_id": "ai_values:l1:8ea65ad3-4784-4d10-8563-c7283bbe45d9",
+    "l1": "Methodical rigor",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 0.207,
+    "model_name": "methodical_rigor"
+  },
+  "analytical_thoroughness": {
+    "cluster_id": "ai_values:l1:4435f825-c35a-42de-b123-d1f442174060",
+    "l1": "Analytical thoroughness",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 0.215,
+    "model_name": "analytical_thoroughness"
+  },
+  "academic_excellence": {
+    "cluster_id": "ai_values:l1:52e96c59-5f60-4c60-8198-e711a0e1552d",
+    "l1": "Academic excellence",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 1.96,
+    "model_name": "academic_excellence"
+  },
+  "domain_specific_expertise": {
+    "cluster_id": "ai_values:l1:070203bd-f99f-40b8-846c-4958f08c88c6",
+    "l1": "Domain-specific expertise",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 0.313,
+    "model_name": "domain_specific_expertise"
+  },
+  "methodical_verification": {
+    "cluster_id": "ai_values:l1:71e0d83e-534b-4de1-bda3-abe0e04801af",
+    "l1": "Methodical verification",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 0.028,
+    "model_name": "methodical_verification"
+  },
+  "structured_and_methodical_reasoning": {
+    "cluster_id": "ai_values:l1:f8768d02-5c46-4b50-8f2d-133bc769a5c1",
+    "l1": "Structured and methodical reasoning",
+    "l2": "Methodical rigor",
+    "l3": "Epistemic values",
+    "freq": 0.093,
+    "model_name": "structured_methodical_reasoning"
+  },
+  "process_efficiency_and_optimization": {
+    "cluster_id": "ai_values:l1:7afef690-0ac6-42a0-9aa4-8737b2711fe4",
+    "l1": "Process efficiency and optimization",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 1.872,
+    "model_name": "process_efficiency_optimization"
+  },
+  "long_term_sustainability": {
+    "cluster_id": "ai_values:l1:f0c908ac-5f30-4ae6-8d41-091634bff882",
+    "l1": "Long-term sustainability",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.46,
+    "model_name": "long_term_sustainability"
+  },
+  "time_management_and_punctuality": {
+    "cluster_id": "ai_values:l1:9c962660-e5f7-4d59-aa99-6c20f99923b1",
+    "l1": "Time management and punctuality",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.039,
+    "model_name": "time_management_punctuality"
+  },
+  "organizational_effectiveness": {
+    "cluster_id": "ai_values:l1:1bf8b825-784c-4b78-b291-11bd507d7dfa",
+    "l1": "Organizational effectiveness",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 1.118,
+    "model_name": "organizational_effectiveness"
+  },
+  "operational_efficiency_and_control": {
+    "cluster_id": "ai_values:l1:f4af20f0-f4cd-441c-86bc-9c9226c52083",
+    "l1": "Operational efficiency and control",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.114,
+    "model_name": "operational_efficiency"
+  },
+  "economic_efficiency": {
+    "cluster_id": "ai_values:l1:9df327e0-01f0-4520-ad83-1115afcdfc09",
+    "l1": "Economic efficiency",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.116,
+    "model_name": "economic_efficiency"
+  },
+  "task_dedication_and_focus": {
+    "cluster_id": "ai_values:l1:85e37afd-63e6-475c-b1d7-b9b14d118451",
+    "l1": "Task dedication and focus",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.033,
+    "model_name": "task_completion_focus"
+  },
+  "value_creation_and_optimization": {
+    "cluster_id": "ai_values:l1:9f4af3b8-ac16-44f4-8a83-42242e5ae8fe",
+    "l1": "Value creation and optimization",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.127,
+    "model_name": "value_creation_optimization"
+  },
+  "practical_solutions_and_support": {
+    "cluster_id": "ai_values:l1:0ec3309e-2060-4cdb-b4de-28920cc601ad",
+    "l1": "Practical solutions and support",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.076,
+    "model_name": "practical_constructive_support"
+  },
+  "resource_and_process_efficiency": {
+    "cluster_id": "ai_values:l1:db6833a3-bb40-4827-8dc2-8bb9a91471e0",
+    "l1": "Resource and process efficiency",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.244,
+    "model_name": "resource_process_efficiency"
+  },
+  "administrative_efficiency": {
+    "cluster_id": "ai_values:l1:9317f16c-0370-4767-a62f-c3d71b6af8a1",
+    "l1": "Administrative efficiency",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.004,
+    "model_name": "administrative_efficiency"
+  },
+  "balanced_and_measured_approaches": {
+    "cluster_id": "ai_values:l1:86205bfb-98db-4ccb-b142-90c4ce9c8b25",
+    "l1": "Balanced and measured approaches",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.08,
+    "model_name": "balanced_measured_approaches"
+  },
+  "financial_prudence": {
+    "cluster_id": "ai_values:l1:41f4cb04-c1ab-48d6-bccc-db38f60eaf43",
+    "l1": "Financial prudence",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.373,
+    "model_name": "financial_prudence"
+  },
+  "sustainable_and_responsible_development": {
+    "cluster_id": "ai_values:l1:3a19760a-1fc7-43e5-ae01-691bba063c71",
+    "l1": "Sustainable and responsible development",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.133,
+    "model_name": "sustainable_responsible_development"
+  },
+  "workplace_effectiveness": {
+    "cluster_id": "ai_values:l1:3c7f472f-b110-47e9-9635-a3c7a1bdfbbe",
+    "l1": "Workplace effectiveness",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.029,
+    "model_name": "workplace_effectiveness"
+  },
+  "revenue_and_sales_optimization": {
+    "cluster_id": "ai_values:l1:aa411964-1e30-40b6-a5ca-7f2032412887",
+    "l1": "Revenue and sales optimization",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.005,
+    "model_name": "revenue_sales_optimization"
+  },
+  "financial_wellbeing": {
+    "cluster_id": "ai_values:l1:feb40b81-72b5-4b5e-8c69-ab27bd573d9d",
+    "l1": "Financial wellbeing",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.041,
+    "model_name": "financial_wellbeing"
+  },
+  "commercial_viability": {
+    "cluster_id": "ai_values:l1:28a82a84-05c2-4550-87d7-a51d19fe1d82",
+    "l1": "Commercial viability",
+    "l2": "Efficiency and resource optimization",
+    "l3": "Practical values",
+    "freq": 0.068,
+    "model_name": "commercial_viability"
+  },
+  "sensory_experience_and_pleasure": {
+    "cluster_id": "ai_values:l1:92e567bf-6bb2-47a8-b39a-33df18863fae",
+    "l1": "Sensory experience and pleasure",
+    "l2": "Pleasure and enjoyment",
+    "l3": "Personal values",
+    "freq": 0.026,
+    "model_name": "sensory_pleasure"
+  },
+  "luxury": {
+    "cluster_id": "ai_values:l1:7a900bdf-018e-42ce-a937-facf95947a0e",
+    "l1": "Luxury",
+    "l2": "Pleasure and enjoyment",
+    "l3": "Personal values",
+    "freq": 0.005,
+    "model_name": "luxury_lifestyle"
+  },
+  "playfulness_and_humor": {
+    "cluster_id": "ai_values:l1:5f923a43-9e23-4862-8e09-7ef073416374",
+    "l1": "Playfulness and humor",
+    "l2": "Pleasure and enjoyment",
+    "l3": "Personal values",
+    "freq": 0.079,
+    "model_name": "joyful_playfulness_and_humor"
+  },
+  "sexual_freedom_and_pleasure": {
+    "cluster_id": "ai_values:l1:f147edde-1fce-4d5f-90a0-4285cdb41ea9",
+    "l1": "Sexual freedom and pleasure",
+    "l2": "Pleasure and enjoyment",
+    "l3": "Personal values",
+    "freq": 0.048,
+    "model_name": "sexual_freedom_pleasure"
+  },
+  "entertainment": {
+    "cluster_id": "ai_values:l1:6e026b8f-59c7-4ba3-b357-9f4f5f5beca3",
+    "l1": "Entertainment",
+    "l2": "Pleasure and enjoyment",
+    "l3": "Personal values",
+    "freq": 0.018,
+    "model_name": "entertainment_value"
+  },
+  "professional_standards_and_conduct": {
+    "cluster_id": "ai_values:l1:d21b494e-64dc-46ff-bc50-25f0351c4692",
+    "l1": "Professional standards and conduct",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 6.286,
+    "model_name": "professional_standards"
+  },
+  "service_excellence": {
+    "cluster_id": "ai_values:l1:136b623f-5a91-4933-8b13-85adb3116ad6",
+    "l1": "Service excellence",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.881,
+    "model_name": "service_excellence"
+  },
+  "user_experience_and_accessibility": {
+    "cluster_id": "ai_values:l1:c96a6be6-1045-452b-894d-e2341c492140",
+    "l1": "User experience and accessibility",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.985,
+    "model_name": "user_experience_accessibility"
+  },
+  "brand_integrity": {
+    "cluster_id": "ai_values:l1:b8c29dd4-d2bf-434f-b0a0-667a1c045ae8",
+    "l1": "Brand integrity",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.044,
+    "model_name": "brand_integrity"
+  },
+  "technical_best_practices": {
+    "cluster_id": "ai_values:l1:ac0bb095-49e9-4959-985b-c59c6e4668a3",
+    "l1": "Technical best practices",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.05,
+    "model_name": "technical_best_practices"
+  },
+  "system_reliability": {
+    "cluster_id": "ai_values:l1:0c962ebd-5f81-4925-a44f-1ac05bb00d4e",
+    "l1": "System reliability",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.546,
+    "model_name": "system_reliability"
+  },
+  "implementation_quality_and_practicality": {
+    "cluster_id": "ai_values:l1:43654e4e-40b6-4e10-ae4a-6342e1326737",
+    "l1": "Implementation quality and practicality",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.039,
+    "model_name": "implementation_quality"
+  },
+  "code_quality_and_structure": {
+    "cluster_id": "ai_values:l1:d424a54f-bb3f-4712-a8c7-952a4cdde9b5",
+    "l1": "Code quality and structure",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.608,
+    "model_name": "code_quality_structure"
+  },
+  "design_excellence": {
+    "cluster_id": "ai_values:l1:d0df8d3a-5a8a-4aa7-aa57-d308c4e64d59",
+    "l1": "Design excellence",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.108,
+    "model_name": "design_excellence"
+  },
+  "documentation_quality_and_thoroughness": {
+    "cluster_id": "ai_values:l1:cd5931e7-d5fc-4a65-bcef-c0317790c6fb",
+    "l1": "Documentation quality and thoroughness",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.148,
+    "model_name": "documentation_thoroughness"
+  },
+  "technical_expertise": {
+    "cluster_id": "ai_values:l1:aa24e26b-5dea-4f37-8c39-b52940af4b67",
+    "l1": "Technical expertise",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 2.837,
+    "model_name": "technical_expertise"
+  },
+  "structural_durability": {
+    "cluster_id": "ai_values:l1:25ca6b55-b51b-453f-84d4-0b68a71197ba",
+    "l1": "Structural durability",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.033,
+    "model_name": "structural_durability"
+  },
+  "quality_and_excellence": {
+    "cluster_id": "ai_values:l1:64dbd02a-6eb3-4f06-a7a1-a4afa4d1515d",
+    "l1": "Quality and excellence",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 4.349,
+    "model_name": "thorough_quality_assurance"
+  },
+  "professional_expertise": {
+    "cluster_id": "ai_values:l1:07c968a9-264e-4f6b-8f07-254904c7f1ed",
+    "l1": "Professional expertise",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.848,
+    "model_name": "professional_expertise"
+  },
+  "ethical_marketing_practices": {
+    "cluster_id": "ai_values:l1:52a9435b-9f23-4dfc-b70b-0eae28e38b58",
+    "l1": "Ethical marketing practices",
+    "l2": "Professional and technical excellence",
+    "l3": "Practical values",
+    "freq": 0.008,
+    "model_name": "ethical_marketing"
+  },
+  "protection_of_self_and_others_from_harm": {
+    "cluster_id": "ai_values:l1:6b623db9-7da2-4c7c-a0a4-32437218a248",
+    "l1": "Protection of self and others from harm",
+    "l2": "Protection of people and environment",
+    "l3": "Protective values",
+    "freq": 0.037,
+    "model_name": "self_others_harm_protection"
+  },
+  "preservation_of_resources_and_information": {
+    "cluster_id": "ai_values:l1:b388895d-9ef8-4de8-b901-597dd52448a0",
+    "l1": "Preservation of resources and information",
+    "l2": "Protection of people and environment",
+    "l3": "Protective values",
+    "freq": 0.029,
+    "model_name": "preservation_of_resources"
+  },
+  "environmental_stewardship_protection_of_people_and_environment": {
+    "cluster_id": "ai_values:l1:377703d6-137c-49e5-a5a0-14054a31fa34",
+    "l1": "Environmental stewardship",
+    "l2": "Protection of people and environment",
+    "l3": "Protective values",
+    "freq": 0.301,
+    "model_name": "environmental_stewardship"
+  },
+  "ethical_mindfulness": {
+    "cluster_id": "ai_values:l1:f1a7a382-c6cb-418d-a889-c2b8cbd6945b",
+    "l1": "Ethical mindfulness",
+    "l2": "Authentic moral identity",
+    "l3": "Personal values",
+    "freq": 0.001,
+    "model_name": "ethical_mindfulness"
+  },
+  "moral_development": {
+    "cluster_id": "ai_values:l1:cd33e0ba-c8d6-4a41-bd94-37e0ed723a51",
+    "l1": "Moral development",
+    "l2": "Authentic moral identity",
+    "l3": "Personal values",
+    "freq": 0.055,
+    "model_name": "moral_development"
+  },
+  "authentic_expression": {
+    "cluster_id": "ai_values:l1:efeeaebd-e370-406f-bcb5-d71314ebe5d4",
+    "l1": "Authentic expression",
+    "l2": "Authentic moral identity",
+    "l3": "Personal values",
+    "freq": 1.806,
+    "model_name": "authentic_expression"
+  },
+  "authentic_selfhood": {
+    "cluster_id": "ai_values:l1:cea5fa7b-98ef-4e53-a095-e7ff30784c04",
+    "l1": "Authentic selfhood",
+    "l2": "Authentic moral identity",
+    "l3": "Personal values",
+    "freq": 0.033,
+    "model_name": "authentic_selfhood"
+  },
+  "personal_character_virtues": {
+    "cluster_id": "ai_values:l1:e927aec9-a948-49be-8d9b-bfd526c24737",
+    "l1": "Personal character virtues",
+    "l2": "Authentic moral identity",
+    "l3": "Personal values",
+    "freq": 0.415,
+    "model_name": "personal_character_integrity"
+  },
+  "knowledge_advancement_and_intellectual_growth": {
+    "cluster_id": "ai_values:l1:6509cc78-3067-4468-bb10-6a6d292db3ce",
+    "l1": "Knowledge advancement and intellectual growth",
+    "l2": "Knowledge development",
+    "l3": "Epistemic values",
+    "freq": 0.16,
+    "model_name": "knowledge_advancement"
+  },
+  "interdisciplinary_knowledge_integration": {
+    "cluster_id": "ai_values:l1:88bd0627-7ca3-48c6-8b45-d02855844abd",
+    "l1": "Interdisciplinary knowledge integration",
+    "l2": "Knowledge development",
+    "l3": "Epistemic values",
+    "freq": 0.024,
+    "model_name": "interdisciplinary_knowledge_integration"
+  },
+  "scientific_understanding": {
+    "cluster_id": "ai_values:l1:1cfcd668-fb2d-4da8-8ef8-2aab54dec0df",
+    "l1": "Scientific understanding",
+    "l2": "Knowledge development",
+    "l3": "Epistemic values",
+    "freq": 0.02,
+    "model_name": "scientific_understanding"
+  },
+  "intellectual_curiosity_and_exploration": {
+    "cluster_id": "ai_values:l1:c81b58a8-7afa-4eae-9631-28510628a589",
+    "l1": "Intellectual curiosity and exploration",
+    "l2": "Knowledge development",
+    "l3": "Epistemic values",
+    "freq": 0.306,
+    "model_name": "intellectual_exploration"
+  },
+  "knowledge_accessibility": {
+    "cluster_id": "ai_values:l1:66a27913-d2c9-4dd8-8f08-9f6dd3ed6586",
+    "l1": "Knowledge accessibility",
+    "l2": "Knowledge development",
+    "l3": "Epistemic values",
+    "freq": 0.028,
+    "model_name": "knowledge_accessibility"
+  },
+  "comprehensive_understanding": {
+    "cluster_id": "ai_values:l1:509bbbfb-3147-4ef1-aefb-7d66bfb8af6d",
+    "l1": "Comprehensive understanding",
+    "l2": "Knowledge development",
+    "l3": "Epistemic values",
+    "freq": 0.263,
+    "model_name": "comprehensive_understanding"
+  },
+  "professional_development": {
+    "cluster_id": "ai_values:l1:f324b60f-5666-48ba-8b78-0f99ec7e3cf2",
+    "l1": "Professional development",
+    "l2": "Professional advancement",
+    "l3": "Practical values",
+    "freq": 0.399,
+    "model_name": "professional_development"
+  },
+  "practical_innovation": {
+    "cluster_id": "ai_values:l1:2c12ca9b-9807-486f-9578-a2dc13de1b88",
+    "l1": "Practical innovation",
+    "l2": "Professional advancement",
+    "l3": "Practical values",
+    "freq": 0.234,
+    "model_name": "practical_innovation"
+  },
+  "entrepreneurial_initiative": {
+    "cluster_id": "ai_values:l1:9e02f893-4851-4985-844f-0bd68e9eb276",
+    "l1": "Entrepreneurial initiative",
+    "l2": "Professional advancement",
+    "l3": "Practical values",
+    "freq": 0.23,
+    "model_name": "entrepreneurial_initiative"
+  },
+  "craft_mastery": {
+    "cluster_id": "ai_values:l1:17cc03c5-7fd0-4f71-9135-f6ad52e5da28",
+    "l1": "Craft mastery",
+    "l2": "Professional advancement",
+    "l3": "Practical values",
+    "freq": 0.21,
+    "model_name": "craft_mastery"
+  },
+  "personal_and_professional_ethics": {
+    "cluster_id": "ai_values:l1:e87941c8-11f9-4628-aefe-ecffb12afc98",
+    "l1": "Personal and professional ethics",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 1.561,
+    "model_name": "personal_professional_ethics"
+  },
+  "healthcare_ethics": {
+    "cluster_id": "ai_values:l1:95beb73e-0826-49c7-a8ca-5b2b21b01d73",
+    "l1": "Healthcare ethics",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.193,
+    "model_name": "healthcare_ethics"
+  },
+  "principled_moral_opposition": {
+    "cluster_id": "ai_values:l1:89e1d3f9-1f2f-4aed-bb3b-fab32fefd39c",
+    "l1": "Principled moral opposition",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.027,
+    "model_name": "principled_moral_opposition"
+  },
+  "responsible_oversight": {
+    "cluster_id": "ai_values:l1:d997d1fa-879f-4880-af67-9a9a864f1681",
+    "l1": "Responsible oversight",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.006,
+    "model_name": "responsible_oversight"
+  },
+  "workplace_boundaries_and_wellbeing": {
+    "cluster_id": "ai_values:l1:18d89809-f45b-468a-ba65-a16be43c6a2a",
+    "l1": "Workplace boundaries and wellbeing",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.058,
+    "model_name": "professional_boundaries_and_wellbeing"
+  },
+  "ethical_and_transparent_governance": {
+    "cluster_id": "ai_values:l1:447bf726-8c39-4c82-8c43-a7d672fa0029",
+    "l1": "Ethical and transparent governance",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 4.476,
+    "model_name": "ethical_transparent_governance"
+  },
+  "legal_and_regulatory_compliance": {
+    "cluster_id": "ai_values:l1:2afcb3eb-859f-46c3-bcd3-4c1f86703ebf",
+    "l1": "Legal and regulatory compliance",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.668,
+    "model_name": "legal_regulatory_compliance"
+  },
+  "institutional_integrity_and_accountability": {
+    "cluster_id": "ai_values:l1:7bf08e78-ce34-4116-a5b4-fa3537f76fe8",
+    "l1": "Institutional integrity and accountability",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.083,
+    "model_name": "institutional_accountability"
+  },
+  "clinical_excellence_and_ethics": {
+    "cluster_id": "ai_values:l1:4fe0fbae-62e3-4c85-923c-fa1c1e630073",
+    "l1": "Clinical excellence and ethics",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.2,
+    "model_name": "clinical_responsibility"
+  },
+  "academic_and_research_ethics": {
+    "cluster_id": "ai_values:l1:f298c004-1925-43af-ac31-bb67fde7330a",
+    "l1": "Academic and research ethics",
+    "l2": "Ethical responsibility",
+    "l3": "Protective values",
+    "freq": 0.477,
+    "model_name": "academic_research_ethics"
+  },
+  "data_and_process_integrity": {
+    "cluster_id": "ai_values:l1:9643879b-342a-4599-8f0c-a5f568b6e85e",
+    "l1": "Data and process integrity",
+    "l2": "Security and stability",
+    "l3": "Protective values",
+    "freq": 0.099,
+    "model_name": "data_process_integrity"
+  },
+  "national_security_and_sovereignty": {
+    "cluster_id": "ai_values:l1:4c0c8ee1-7793-4c8d-941e-006113e6b3d7",
+    "l1": "National security and sovereignty",
+    "l2": "Security and stability",
+    "l3": "Protective values",
+    "freq": 0.013,
+    "model_name": "national_security_sovereignty"
+  },
+  "prudence": {
+    "cluster_id": "ai_values:l1:3022a2ab-00d2-4315-8086-3a1cfda4fd7d",
+    "l1": "Prudence",
+    "l2": "Security and stability",
+    "l3": "Protective values",
+    "freq": 0.283,
+    "model_name": "prudent_decision_making"
+  },
+  "digital_security": {
+    "cluster_id": "ai_values:l1:3e697fc1-d938-4b89-99c8-cb9ba3537bd6",
+    "l1": "Digital security",
+    "l2": "Security and stability",
+    "l3": "Protective values",
+    "freq": 0.531,
+    "model_name": "digital_security"
+  },
+  "system_stability_and_continuity": {
+    "cluster_id": "ai_values:l1:85d1600c-9a42-470f-9a3f-92b2eb19de1b",
+    "l1": "System stability and continuity",
+    "l2": "Security and stability",
+    "l3": "Protective values",
+    "freq": 0.102,
+    "model_name": "system_continuity"
+  },
+  "risk_management": {
+    "cluster_id": "ai_values:l1:3940a113-2df8-4851-966e-e3753f8f5861",
+    "l1": "Risk management",
+    "l2": "Security and stability",
+    "l3": "Protective values",
+    "freq": 0.394,
+    "model_name": "risk_management"
+  },
+  "safety_and_harm_values": {
+    "cluster_id": "ai_values:l1:d9ba96e8-2535-4904-812f-8717f8a1725a",
+    "l1": "Safety and harm values",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 1.538,
+    "model_name": "safety_harm_prevention"
+  },
+  "child_and_student_wellbeing": {
+    "cluster_id": "ai_values:l1:40e6a27c-6ad2-4997-b3d1-4e2b82fd495a",
+    "l1": "Child and student wellbeing",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.145,
+    "model_name": "child_student_wellbeing"
+  },
+  "parental_care": {
+    "cluster_id": "ai_values:l1:33c43178-a574-4695-9409-87ab78cb1484",
+    "l1": "Parental care",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.024,
+    "model_name": "parental_care"
+  },
+  "consumer_and_client_protection": {
+    "cluster_id": "ai_values:l1:2338f605-1011-4ecb-aa9c-11639353f68f",
+    "l1": "Consumer and client protection",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.097,
+    "model_name": "consumer_client_protection"
+  },
+  "diplomatic_conflict_prevention": {
+    "cluster_id": "ai_values:l1:9c4bd6b9-60a0-4e1e-bc64-40e049e98a7e",
+    "l1": "Diplomatic conflict prevention",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.023,
+    "model_name": "diplomatic_conflict_prevention"
+  },
+  "vulnerable_population_protection": {
+    "cluster_id": "ai_values:l1:b920fc0b-aa30-4aaf-83a6-453a37673997",
+    "l1": "Vulnerable population protection",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.055,
+    "model_name": "vulnerable_population_protection"
+  },
+  "preventative_wellness_approaches": {
+    "cluster_id": "ai_values:l1:f58c7d23-1a95-4700-a1cd-5eb0921acdc0",
+    "l1": "Preventative wellness approaches",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.082,
+    "model_name": "preventative_wellness_approaches"
+  },
+  "child_welfare": {
+    "cluster_id": "ai_values:l1:98c70681-6110-4422-8c31-88af4564b626",
+    "l1": "Child welfare",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.083,
+    "model_name": "child_welfare"
+  },
+  "content_appropriateness": {
+    "cluster_id": "ai_values:l1:63bc31a0-b504-4d2a-aecd-dcc3f0417449",
+    "l1": "Content appropriateness",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.117,
+    "model_name": "content_appropriateness"
+  },
+  "trauma_responsiveness": {
+    "cluster_id": "ai_values:l1:980be63b-79df-4ea0-b62f-d59efd0e3aa2",
+    "l1": "Trauma responsiveness",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.018,
+    "model_name": "trauma_responsiveness"
+  },
+  "animal_and_pet_welfare": {
+    "cluster_id": "ai_values:l1:6368f05a-7e92-469c-b2ca-f5d52f1023ba",
+    "l1": "Animal and pet welfare",
+    "l2": "Protecting vulnerable entities",
+    "l3": "Protective values",
+    "freq": 0.052,
+    "model_name": "animal_pet_welfare"
+  },
+  "diplomatic_and_institutional_cooperation": {
+    "cluster_id": "ai_values:l1:46925f19-9db6-4960-a997-ae4f254daf86",
+    "l1": "Diplomatic and institutional cooperation",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.02,
+    "model_name": "diplomatic_institutional_cooperation"
+  },
+  "worker_welfare_and_dignity": {
+    "cluster_id": "ai_values:l1:b3ca9e00-e83e-40e9-87d0-f31d1509bfb8",
+    "l1": "Worker welfare and dignity",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.019,
+    "model_name": "worker_welfare_dignity"
+  },
+  "workplace_etiquette_and_respect": {
+    "cluster_id": "ai_values:l1:83ab16d8-9ba1-4c56-b28e-b4b71d717de8",
+    "l1": "Workplace etiquette and respect",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.027,
+    "model_name": "workplace_respect"
+  },
+  "customer_advocacy": {
+    "cluster_id": "ai_values:l1:78c6c6ff-705e-4fd4-ac84-51e8207375fb",
+    "l1": "Customer advocacy",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.43,
+    "model_name": "customer_advocacy"
+  },
+  "responsible_media_practices": {
+    "cluster_id": "ai_values:l1:626c3395-d327-4681-8563-a6418db8dd25",
+    "l1": "Responsible media practices",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.008,
+    "model_name": "responsible_media_practices"
+  },
+  "democratic_governance_and_institutions": {
+    "cluster_id": "ai_values:l1:89cddafc-d158-4a05-89a6-d272cec0fc7a",
+    "l1": "Democratic governance and institutions",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.061,
+    "model_name": "democratic_governance"
+  },
+  "institutional_and_national_loyalty": {
+    "cluster_id": "ai_values:l1:27a41f5c-09c2-4e2f-9806-a3b06cd2b889",
+    "l1": "Institutional and national loyalty",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.038,
+    "model_name": "institutional_national_loyalty"
+  },
+  "authority_and_hierarchical_deference": {
+    "cluster_id": "ai_values:l1:53535831-ef49-4522-aa5e-38743a37fb5c",
+    "l1": "Authority and hierarchical deference",
+    "l2": "Well-functioning social systems and organizations",
+    "l3": "Social values",
+    "freq": 0.133,
+    "model_name": "authority_deference"
+  },
+  "procedural_adherence": {
+    "cluster_id": "ai_values:l1:2a2d0586-6bea-4f80-86f9-94fcbf47d41a",
+    "l1": "Procedural adherence",
+    "l2": "Compliance and accountability",
+    "l3": "Practical values",
+    "freq": 0.15,
+    "model_name": "procedural_adherence"
+  },
+  "rule_and_instruction_compliance": {
+    "cluster_id": "ai_values:l1:987165e8-2abc-4b17-a977-0c5418d65d0f",
+    "l1": "Rule and instruction compliance",
+    "l2": "Compliance and accountability",
+    "l3": "Practical values",
+    "freq": 0.094,
+    "model_name": "rule_instruction_compliance"
+  },
+  "business_ethics": {
+    "cluster_id": "ai_values:l1:0ebcf52e-6577-40a3-80f8-8bacb98278c4",
+    "l1": "Business ethics",
+    "l2": "Compliance and accountability",
+    "l3": "Practical values",
+    "freq": 0.161,
+    "model_name": "business_ethics"
+  },
+  "transparency_and_accountability": {
+    "cluster_id": "ai_values:l1:b0ac1113-0744-4511-85d2-071957119bcf",
+    "l1": "Transparency and accountability",
+    "l2": "Compliance and accountability",
+    "l3": "Practical values",
+    "freq": 0.026,
+    "model_name": "transparency_accountability"
+  },
+  "responsible_governance_and_stewardship": {
+    "cluster_id": "ai_values:l1:9f75fd7f-de06-4a91-b5ac-1a7bfa194e40",
+    "l1": "Responsible governance and stewardship",
+    "l2": "Compliance and accountability",
+    "l3": "Practical values",
+    "freq": 0.052,
+    "model_name": "responsible_governance_stewardship"
+  },
+  "regulatory_adherence_and_compliance": {
+    "cluster_id": "ai_values:l1:f7270773-87b7-4174-b711-bfc5476452c2",
+    "l1": "Regulatory adherence and compliance",
+    "l2": "Compliance and accountability",
+    "l3": "Practical values",
+    "freq": 0.046,
+    "model_name": "regulatory_compliance"
+  },
+  "strategic_foresight": {
+    "cluster_id": "ai_values:l1:d746c616-667a-46fa-a8cd-5ca6eea561fa",
+    "l1": "Strategic foresight",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.305,
+    "model_name": "strategic_foresight"
+  },
+  "intellectual_depth": {
+    "cluster_id": "ai_values:l1:5fe88548-4462-4199-897f-8207cb4b0468",
+    "l1": "Intellectual depth",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.03,
+    "model_name": "intellectual_depth"
+  },
+  "rational_skepticism": {
+    "cluster_id": "ai_values:l1:a30ec757-5784-4a13-9e1d-de23fc7c55a6",
+    "l1": "Rational skepticism",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.014,
+    "model_name": "rational_skepticism"
+  },
+  "critical_thought_and_discernment": {
+    "cluster_id": "ai_values:l1:93941f0b-6aeb-4338-b8cd-145130313798",
+    "l1": "Critical thought and discernment",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.144,
+    "model_name": "critical_thought_discernment"
+  },
+  "empirical_evidence_and_validation": {
+    "cluster_id": "ai_values:l1:c3560552-229f-4f19-b308-878537a607b1",
+    "l1": "Empirical evidence and validation",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.084,
+    "model_name": "empirical_validation"
+  },
+  "information_and_technology_literacy": {
+    "cluster_id": "ai_values:l1:6058d65e-9d5e-41f7-8091-005cf4916316",
+    "l1": "Information and technology literacy",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.004,
+    "model_name": "information_technology_literacy"
+  },
+  "contextual_awareness": {
+    "cluster_id": "ai_values:l1:f50a4580-eea4-4b79-b524-0d6cc05dcaea",
+    "l1": "Contextual awareness",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.044,
+    "model_name": "contextual_awareness"
+  },
+  "evidence_based_reasoning": {
+    "cluster_id": "ai_values:l1:03e2cec1-cf20-4070-8d4a-716fe4e3a105",
+    "l1": "Evidence-based reasoning",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.478,
+    "model_name": "evidence_based_reasoning"
+  },
+  "methodical_critical_inquiry": {
+    "cluster_id": "ai_values:l1:971cb014-0986-49ea-8d56-10ac1696dc60",
+    "l1": "Methodical critical inquiry",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.017,
+    "model_name": "methodical_critical_inquiry"
+  },
+  "ethical_and_philosophical_examination": {
+    "cluster_id": "ai_values:l1:16d05609-a793-49d9-af05-4fd5b9b1ffae",
+    "l1": "Ethical and philosophical examination",
+    "l2": "Critical thinking",
+    "l3": "Epistemic values",
+    "freq": 0.113,
+    "model_name": "ethical_philosophical_examination"
+  },
+  "intellectual_humility_and_openness": {
+    "cluster_id": "ai_values:l1:58522983-3ac2-43dd-aa85-dbfdc9c80228",
+    "l1": "Intellectual humility and openness",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.412,
+    "model_name": "intellectual_humility"
+  },
+  "intellectual_honesty": {
+    "cluster_id": "ai_values:l1:8b089085-df09-4c37-817d-aeaf10566a6d",
+    "l1": "Intellectual honesty",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 1.227,
+    "model_name": "intellectual_honesty"
+  },
+  "accuracy_and_truthfulness": {
+    "cluster_id": "ai_values:l1:1763db5d-0f1f-49f1-90f6-5febd621116b",
+    "l1": "Accuracy and truthfulness",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 1.92,
+    "model_name": "accuracy_truthfulness"
+  },
+  "impartiality_and_objectivity": {
+    "cluster_id": "ai_values:l1:74b46b55-a7aa-43fc-a28e-0938b97a70d1",
+    "l1": "Impartiality and objectivity",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.624,
+    "model_name": "impartial_objectivity"
+  },
+  "methodological_transparency": {
+    "cluster_id": "ai_values:l1:19c701a2-fd42-4140-af1f-d3b5d6ed09f0",
+    "l1": "Methodological transparency",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.007,
+    "model_name": "methodological_transparency"
+  },
+  "professional_objectivity": {
+    "cluster_id": "ai_values:l1:0828faf9-6239-41d1-bc15-396c3fe53e22",
+    "l1": "Professional objectivity",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.1,
+    "model_name": "professional_objectivity"
+  },
+  "academic_and_research_integrity": {
+    "cluster_id": "ai_values:l1:15fcac2b-82f6-4523-935f-9e00301e7add",
+    "l1": "Academic and Research Integrity",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.128,
+    "model_name": "academic_research_integrity"
+  },
+  "academic_rigor_and_educational_excellence": {
+    "cluster_id": "ai_values:l1:4d15b92c-00ea-423b-933c-1bffba713f31",
+    "l1": "Academic rigor and educational excellence",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.399,
+    "model_name": "academic_rigor"
+  },
+  "balanced_reasoning_and_discourse": {
+    "cluster_id": "ai_values:l1:01b65194-bbd7-419b-a817-106aa998694c",
+    "l1": "Balanced reasoning and discourse",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.545,
+    "model_name": "balanced_reasoning"
+  },
+  "intellectual_integrity_and_truth_seeking": {
+    "cluster_id": "ai_values:l1:49a534e5-9583-4fc0-8f56-1588a1ffd4b8",
+    "l1": "Intellectual integrity and truth-seeking",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.109,
+    "model_name": "intellectual_integrity_truth_seeking"
+  },
+  "professional_and_intellectual_integrity": {
+    "cluster_id": "ai_values:l1:8bb60c0b-ac41-4b7a-8fc5-dffdd2bf41ac",
+    "l1": "Professional and intellectual integrity",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.1,
+    "model_name": "professional_intellectual_integrity"
+  },
+  "objective_assessment_and_impartiality": {
+    "cluster_id": "ai_values:l1:870ef0b6-d875-4004-ab13-b45cc0a4aee5",
+    "l1": "Objective assessment and impartiality",
+    "l2": "Intellectual integrity and objectivity",
+    "l3": "Epistemic values",
+    "freq": 0.117,
+    "model_name": "objective_assessment_impartiality"
+  },
+  "justice_and_social_equality": {
+    "cluster_id": "ai_values:l1:dd010a90-add7-4d6c-bd0a-960ee06067e9",
+    "l1": "Justice and social equality",
+    "l2": "Social equity and justice",
+    "l3": "Social values",
+    "freq": 0.755,
+    "model_name": "justice_social_equality"
+  },
+  "gender_equity": {
+    "cluster_id": "ai_values:l1:7886d7fb-900e-4be1-b84d-0b047fd6eecf",
+    "l1": "Gender equity",
+    "l2": "Social equity and justice",
+    "l3": "Social values",
+    "freq": 0.089,
+    "model_name": "gender_equity"
+  },
+  "social_progress_and_impact": {
+    "cluster_id": "ai_values:l1:c8401d65-988e-48f3-bc88-ce14e9af00d0",
+    "l1": "Social progress and impact",
+    "l2": "Social equity and justice",
+    "l3": "Social values",
+    "freq": 0.138,
+    "model_name": "social_progress_impact"
+  },
+  "social_power_and_status": {
+    "cluster_id": "ai_values:l1:f452f419-af9e-4133-a873-e6fbc6bfcb6c",
+    "l1": "Social power and status",
+    "l2": "Social equity and justice",
+    "l3": "Social values",
+    "freq": 0.069,
+    "model_name": "social_power_status"
+  },
+  "economic_justice_and_fairness": {
+    "cluster_id": "ai_values:l1:ddf90c07-6381-4f7c-9bca-ccdcb2eb0997",
+    "l1": "Economic justice and fairness",
+    "l2": "Social equity and justice",
+    "l3": "Social values",
+    "freq": 0.031,
+    "model_name": "economic_fairness"
+  },
+  "healthcare_equity_and_access": {
+    "cluster_id": "ai_values:l1:337fd581-3d15-44aa-a7e3-f479ced75b42",
+    "l1": "Healthcare equity and access",
+    "l2": "Social equity and justice",
+    "l3": "Social values",
+    "freq": 0.014,
+    "model_name": "healthcare_equity_access"
+  },
+  "educational_equity_and_inclusion": {
+    "cluster_id": "ai_values:l1:2a4d13c9-dcb9-4d6d-a504-6ff162338b0f",
+    "l1": "Educational equity and inclusion",
+    "l2": "Social equity and justice",
+    "l3": "Social values",
+    "freq": 0.533,
+    "model_name": "educational_equity_inclusion"
+  },
+  "data_driven_decision_making": {
+    "cluster_id": "ai_values:l1:84313a66-36af-4196-a5b5-4782c3d3429c",
+    "l1": "Data-driven decision-making",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.139,
+    "model_name": "data_driven_decision_making"
+  },
+  "results_orientation": {
+    "cluster_id": "ai_values:l1:a3c0e4a5-3f80-4896-a9f2-3d82c62d5e38",
+    "l1": "Results orientation",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.112,
+    "model_name": "measurable_results"
+  },
+  "competitive_advantage": {
+    "cluster_id": "ai_values:l1:2ec61dc3-8e6c-4468-99e6-c21ce0c37a9d",
+    "l1": "Competitive advantage",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.009,
+    "model_name": "competitive_advantage"
+  },
+  "structured_methodology_and_organization": {
+    "cluster_id": "ai_values:l1:8d00a587-33ea-47b1-af97-68518c5b91c4",
+    "l1": "Structured methodology and organization",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.133,
+    "model_name": "structured_methodology"
+  },
+  "goal_orientation": {
+    "cluster_id": "ai_values:l1:7e208c03-bd34-4a71-bf09-aac5ad8625b4",
+    "l1": "Goal orientation",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.048,
+    "model_name": "goal_orientation"
+  },
+  "adaptability": {
+    "cluster_id": "ai_values:l1:91f926ee-9bf7-4a32-bb6f-81af145ce386",
+    "l1": "Adaptability",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 1.332,
+    "model_name": "contextual_adaptation"
+  },
+  "business_acumen": {
+    "cluster_id": "ai_values:l1:34610879-8344-4e07-8795-3fccd65871cc",
+    "l1": "Business acumen",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.076,
+    "model_name": "business_acumen"
+  },
+  "effective_communication": {
+    "cluster_id": "ai_values:l1:bf324b1f-88d1-4d59-89ea-a6a3ae836e18",
+    "l1": "Effective communication",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 1.055,
+    "model_name": "effective_communication"
+  },
+  "customer_centricity": {
+    "cluster_id": "ai_values:l1:73c72acf-2775-471b-9e42-40b49ad14c15",
+    "l1": "Customer centricity",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.261,
+    "model_name": "customer_centricity"
+  },
+  "market_awareness": {
+    "cluster_id": "ai_values:l1:3dec0ede-001f-4fa8-ba95-a29e849925ac",
+    "l1": "Market awareness",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.009,
+    "model_name": "market_awareness"
+  },
+  "evidence_based_practice_and_assessment": {
+    "cluster_id": "ai_values:l1:027f1df5-d8d5-438f-be3e-cb63affe548c",
+    "l1": "Evidence-based practice and assessment",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.072,
+    "model_name": "evidence_based_practice"
+  },
+  "pragmatic_problem_solving": {
+    "cluster_id": "ai_values:l1:2ee96fa5-31c0-4206-81ca-f134ac8d1059",
+    "l1": "Pragmatic problem-solving",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 2.585,
+    "model_name": "pragmatic_problem_solving"
+  },
+  "strategic_and_forward_looking_planning": {
+    "cluster_id": "ai_values:l1:4bf1e1f5-affd-4d84-af68-009a37504a84",
+    "l1": "Strategic and forward-looking planning",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.369,
+    "model_name": "strategic_forward_planning"
+  },
+  "economic_development_and_prosperity": {
+    "cluster_id": "ai_values:l1:84aa4a8d-c776-46d8-953f-6f2f99f229f7",
+    "l1": "Economic development and prosperity",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.051,
+    "model_name": "economic_opportunity"
+  },
+  "measurable_progress": {
+    "cluster_id": "ai_values:l1:dcdddf99-8be6-491b-9bde-06c70c28616c",
+    "l1": "Measurable progress",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.306,
+    "model_name": "measurable_progress"
+  },
+  "strategic_leadership_and_vision": {
+    "cluster_id": "ai_values:l1:59ada3ca-dd36-42eb-96ab-9369e0156718",
+    "l1": "Strategic leadership and vision",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.063,
+    "model_name": "strategic_vision_leadership"
+  },
+  "iterative_improvement": {
+    "cluster_id": "ai_values:l1:d74a9178-db69-42c8-9bf4-eb39d5601981",
+    "l1": "Iterative improvement",
+    "l2": "Business effectiveness",
+    "l3": "Practical values",
+    "freq": 0.506,
+    "model_name": "iterative_improvement"
+  },
+  "consent_and_boundaries": {
+    "cluster_id": "ai_values:l1:d823c19e-1457-412c-a739-8298b1670459",
+    "l1": "Consent and boundaries",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.299,
+    "model_name": "consent_boundaries"
+  },
+  "intellectual_property_rights": {
+    "cluster_id": "ai_values:l1:d3d969d6-2d1a-4535-9c33-baec4fa10684",
+    "l1": "Intellectual property rights",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.082,
+    "model_name": "intellectual_property_rights"
+  },
+  "property_rights_protection": {
+    "cluster_id": "ai_values:l1:b5e80a7a-1023-4997-8f2a-a558c9d101bb",
+    "l1": "Property rights protection",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.008,
+    "model_name": "property_rights_protection"
+  },
+  "worker_rights_and_safety": {
+    "cluster_id": "ai_values:l1:e7d43f62-0a5a-491f-9cd9-eda83d7e1049",
+    "l1": "Worker rights and safety",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.039,
+    "model_name": "worker_rights_safety"
+  },
+  "age_and_developmental_appropriateness": {
+    "cluster_id": "ai_values:l1:66cba804-bbe3-4b6f-969a-406caf77a376",
+    "l1": "Age and developmental appropriateness",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.026,
+    "model_name": "age_developmental_appropriateness"
+  },
+  "elderly_dignity_and_wellbeing": {
+    "cluster_id": "ai_values:l1:7e53e168-02fe-4f11-b7b6-b624bd920a55",
+    "l1": "Elderly dignity and wellbeing",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.004,
+    "model_name": "elderly_dignity_wellbeing"
+  },
+  "personal_boundaries_and_autonomy": {
+    "cluster_id": "ai_values:l1:3c0c7e3d-d1b6-40d6-87c7-aad9ec190166",
+    "l1": "Personal boundaries and autonomy",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.089,
+    "model_name": "personal_boundaries"
+  },
+  "compassionate_and_holistic_care": {
+    "cluster_id": "ai_values:l1:0905730d-c8ee-427c-9b00-a35a143a9d20",
+    "l1": "Compassionate and holistic care",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.214,
+    "model_name": "compassionate_holistic_care"
+  },
+  "emotional_safety_and_support": {
+    "cluster_id": "ai_values:l1:f528338d-b115-4847-b560-016129b9d1f2",
+    "l1": "Emotional safety and support",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.214,
+    "model_name": "emotional_safety_support"
+  },
+  "patient_centered_protection_and_advocacy": {
+    "cluster_id": "ai_values:l1:4c14a101-cd8a-40c5-891b-db8b9d02c73f",
+    "l1": "Patient-centered protection and advocacy",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.099,
+    "model_name": "patient_centered_advocacy"
+  },
+  "mental_health_sensitivity_and_support": {
+    "cluster_id": "ai_values:l1:c7b98408-c866-4a0e-a90a-b93cf620d8c9",
+    "l1": "Mental health sensitivity and support",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.044,
+    "model_name": "mental_health_support"
+  },
+  "power_dynamics_values": {
+    "cluster_id": "ai_values:l1:65450630-b65f-4046-94e0-82c143cbbbd8",
+    "l1": "Power dynamics values",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.139,
+    "model_name": "power_dynamics"
+  },
+  "respect_for_personal_and_professional_boundaries": {
+    "cluster_id": "ai_values:l1:8319377e-66e7-41c3-a4f6-934037091d21",
+    "l1": "Respect for personal and professional boundaries",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.253,
+    "model_name": "personal_professional_boundaries"
+  },
+  "privacy_and_confidentiality": {
+    "cluster_id": "ai_values:l1:3e8cc096-b860-412c-9fbc-4d08b97bb51a",
+    "l1": "Privacy and confidentiality",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.271,
+    "model_name": "privacy_confidentiality"
+  },
+  "protection_of_human_rights": {
+    "cluster_id": "ai_values:l1:b0e2acc6-a6ef-42bd-8aec-8c68f5576794",
+    "l1": "Protection of human rights",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.037,
+    "model_name": "protection_human_rights"
+  },
+  "human_dignity_and_respect": {
+    "cluster_id": "ai_values:l1:7c8ab0d2-eaa0-4a59-bf67-bd8a9c1dcc50",
+    "l1": "Human dignity and respect",
+    "l2": "Protecting human rights and dignity",
+    "l3": "Protective values",
+    "freq": 0.27,
+    "model_name": "human_dignity_respect"
+  },
+  "inner_peace": {
+    "cluster_id": "ai_values:l1:d42b157b-b6e5-446e-b87a-95e95276f671",
+    "l1": "Inner peace",
+    "l2": "Spiritual fulfillment and meaning",
+    "l3": "Personal values",
+    "freq": 0.031,
+    "model_name": "inner_peace"
+  },
+  "purpose_and_meaning": {
+    "cluster_id": "ai_values:l1:e017c22d-c744-493e-8e28-9851bbc8f925",
+    "l1": "Purpose and meaning",
+    "l2": "Spiritual fulfillment and meaning",
+    "l3": "Personal values",
+    "freq": 0.04,
+    "model_name": "purpose_and_meaning"
+  },
+  "wisdom_and_inner_guidance": {
+    "cluster_id": "ai_values:l1:0167e96f-fb3d-4461-8c4f-dcc1c39ec145",
+    "l1": "Wisdom and inner guidance",
+    "l2": "Spiritual fulfillment and meaning",
+    "l3": "Personal values",
+    "freq": 0.053,
+    "model_name": "wisdom_inner_guidance"
+  },
+  "religious_and_spiritual_authenticity": {
+    "cluster_id": "ai_values:l1:dabfc76e-f6e8-41eb-b661-40b9c390c318",
+    "l1": "Religious and spiritual authenticity",
+    "l2": "Spiritual fulfillment and meaning",
+    "l3": "Personal values",
+    "freq": 0.014,
+    "model_name": "religious_spiritual_authenticity"
+  },
+  "nature_appreciation_and_connection": {
+    "cluster_id": "ai_values:l1:5cc562d9-251a-41f9-ba77-51d934e77b2d",
+    "l1": "Nature appreciation and connection",
+    "l2": "Spiritual fulfillment and meaning",
+    "l3": "Personal values",
+    "freq": 0.014,
+    "model_name": "nature_appreciation"
+  },
+  "spiritual_and_religious_devotion": {
+    "cluster_id": "ai_values:l1:1ca1bff9-96bf-4d89-a9a4-4e309084b645",
+    "l1": "Spiritual and religious devotion",
+    "l2": "Spiritual fulfillment and meaning",
+    "l3": "Personal values",
+    "freq": 0.073,
+    "model_name": "spiritual_religious_devotion"
+  },
+  "emotional_intelligence": {
+    "cluster_id": "ai_values:l1:ee95feae-ca70-420a-b476-f89293b87519",
+    "l1": "Emotional intelligence",
+    "l2": "Emotional depth and authentic connection",
+    "l3": "Personal values",
+    "freq": 0.617,
+    "model_name": "emotional_attunement"
+  },
+  "emotional_experience_and_depth": {
+    "cluster_id": "ai_values:l1:1a2cbaf4-c3d8-4ee6-a890-ffc7b9ae6f2b",
+    "l1": "Emotional experience and depth",
+    "l2": "Emotional depth and authentic connection",
+    "l3": "Personal values",
+    "freq": 0.117,
+    "model_name": "emotional_depth"
+  },
+  "emotional_authenticity_and_openness": {
+    "cluster_id": "ai_values:l1:f9a9e01f-053c-474c-8650-dc2244247475",
+    "l1": "Emotional authenticity and openness",
+    "l2": "Emotional depth and authentic connection",
+    "l3": "Personal values",
+    "freq": 0.397,
+    "model_name": "emotional_authenticity"
+  },
+  "romantic_love": {
+    "cluster_id": "ai_values:l1:54201bc1-c74b-451c-8369-cc3af8156d49",
+    "l1": "Romantic love",
+    "l2": "Emotional depth and authentic connection",
+    "l3": "Personal values",
+    "freq": 0.025,
+    "model_name": "romantic_love"
+  },
+  "emotional_intimacy_and_authentic_connection": {
+    "cluster_id": "ai_values:l1:6c52a319-ac35-45a3-9b5b-e3df6688d40f",
+    "l1": "Emotional intimacy and authentic connection",
+    "l2": "Emotional depth and authentic connection",
+    "l3": "Personal values",
+    "freq": 0.174,
+    "model_name": "authentic_emotional_connection"
+  },
+  "prosocial_altruism": {
+    "cluster_id": "ai_values:l1:afdfeaf1-73d7-4aa9-9a90-7c25d037a83b",
+    "l1": "Prosocial altruism",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 5.978,
+    "model_name": "prosocial_aiding"
+  },
+  "authentic_and_honest_communication": {
+    "cluster_id": "ai_values:l1:fdfadc5f-3042-4b4c-9c5d-21a15959502d",
+    "l1": "Authentic and honest communication",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.613,
+    "model_name": "authentic_honest_communication"
+  },
+  "intergenerational_respect_and_relationships": {
+    "cluster_id": "ai_values:l1:6b6b8572-4ef6-4f09-b48e-0cf3d4f6ad30",
+    "l1": "Intergenerational respect and relationships",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.039,
+    "model_name": "intergenerational_relationships"
+  },
+  "collective_and_social_responsibility": {
+    "cluster_id": "ai_values:l1:1341ce2a-cb2d-4d7b-9d32-dcb03504543c",
+    "l1": "Collective and social responsibility",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 1.491,
+    "model_name": "collective_social_responsibility"
+  },
+  "supportive_mentorship": {
+    "cluster_id": "ai_values:l1:0d1f2d58-aa03-4f12-b0bf-57b3b9df315d",
+    "l1": "Supportive mentorship",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.188,
+    "model_name": "supportive_mentorship"
+  },
+  "supportive_and_caring_relationships": {
+    "cluster_id": "ai_values:l1:d16889cf-4662-4574-ac11-1ae915f1d118",
+    "l1": "Supportive and caring relationships",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.248,
+    "model_name": "supportive_caring_relationships"
+  },
+  "collaborative_team_harmony": {
+    "cluster_id": "ai_values:l1:0649af31-e02e-4400-8ee4-34b675d0c7dc",
+    "l1": "Collaborative team harmony",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.159,
+    "model_name": "collaborative_team_harmony"
+  },
+  "genuine_relationships_and_connection": {
+    "cluster_id": "ai_values:l1:4199e1f2-8d72-4aaf-bcbd-c288a67919f0",
+    "l1": "Genuine relationships and connection",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.393,
+    "model_name": "genuine_social_connection"
+  },
+  "warmth_and_approachability": {
+    "cluster_id": "ai_values:l1:3ce1923f-85e1-4c2c-90d2-1669e5185052",
+    "l1": "Warmth and approachability",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.036,
+    "model_name": "warmth_approachability"
+  },
+  "family_bonds_and_cohesion": {
+    "cluster_id": "ai_values:l1:d5c9bffc-bd25-4b4e-ba34-c91933c0ce72",
+    "l1": "Family bonds and cohesion",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.266,
+    "model_name": "family_bonds_cohesion"
+  },
+  "conflict_resolution_and_reconciliation": {
+    "cluster_id": "ai_values:l1:c73e2bbb-eb63-4ce7-8ee4-a4082bf6f394",
+    "l1": "Conflict resolution and reconciliation",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.041,
+    "model_name": "peaceful_conflict_resolution"
+  },
+  "emotional_connection": {
+    "cluster_id": "ai_values:l1:0b45b1ce-2c59-45f5-9f56-9323aae5c95e",
+    "l1": "Emotional connection",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.008,
+    "model_name": "emotional_connection"
+  },
+  "collective_welfare_and_public_good": {
+    "cluster_id": "ai_values:l1:25698c90-96c2-429f-98b1-817098239324",
+    "l1": "Collective welfare and public good",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.294,
+    "model_name": "collective_welfare"
+  },
+  "civic_and_community_engagement": {
+    "cluster_id": "ai_values:l1:46bc9eaa-2750-48f4-ab29-273cc23844a0",
+    "l1": "Civic and community engagement",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.105,
+    "model_name": "civic_community_engagement"
+  },
+  "accessibility": {
+    "cluster_id": "ai_values:l1:e4217cd9-2316-482d-b80f-e82d40fe4a93",
+    "l1": "Accessibility",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 1.664,
+    "model_name": "inclusive_accessibility"
+  },
+  "community_bonds_and_cohesion": {
+    "cluster_id": "ai_values:l1:b7120c21-35cd-496a-9c8e-09204cc97cd3",
+    "l1": "Community bonds and cohesion",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.398,
+    "model_name": "community_bonds_cohesion"
+  },
+  "selflessness_and_sacrifice": {
+    "cluster_id": "ai_values:l1:163af3ae-d253-4fee-b4b8-8a551821720c",
+    "l1": "Selflessness and sacrifice",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.031,
+    "model_name": "selfless_sacrifice"
+  },
+  "reciprocal_relationship_quality": {
+    "cluster_id": "ai_values:l1:257a27db-e31f-40e7-962b-60416e41c095",
+    "l1": "Reciprocal relationship quality",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.426,
+    "model_name": "reciprocal_relationship_quality"
+  },
+  "social_harmony_and_stability": {
+    "cluster_id": "ai_values:l1:e3e38f4d-948c-40cc-aaaa-f0e8d17bc337",
+    "l1": "Social harmony and stability",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.119,
+    "model_name": "social_harmony_stability"
+  },
+  "audience_engagement": {
+    "cluster_id": "ai_values:l1:a8325734-f0a3-49c4-aebf-1ee211104480",
+    "l1": "Audience engagement",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.168,
+    "model_name": "audience_engagement"
+  },
+  "stakeholder_and_community_empowerment": {
+    "cluster_id": "ai_values:l1:f56be056-bf74-4b0d-97c3-e5ad4b4366bc",
+    "l1": "Stakeholder and community empowerment",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.159,
+    "model_name": "stakeholder_community_empowerment"
+  },
+  "environmental_stewardship_community_and_relationship_bonds": {
+    "cluster_id": "ai_values:l1:9af09a9e-60a3-4c3f-af6e-31390dd9073b",
+    "l1": "Environmental stewardship",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.028,
+    "model_name": "environmental_stewardship"
+  },
+  "knowledge_sharing_and_education": {
+    "cluster_id": "ai_values:l1:de9bcb2b-58fe-4285-9cd3-3a6e8e4f0a45",
+    "l1": "Knowledge sharing and education",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.331,
+    "model_name": "knowledge_sharing_education"
+  },
+  "professional_collegiality": {
+    "cluster_id": "ai_values:l1:bee75fbe-2cb3-444a-becd-a24db11c2abc",
+    "l1": "Professional collegiality",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.195,
+    "model_name": "professional_collegiality"
+  },
+  "compassionate_care_and_support": {
+    "cluster_id": "ai_values:l1:37fe179f-92b9-48a0-b885-6547fd717343",
+    "l1": "Compassionate care and support",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.167,
+    "model_name": "compassionate_support"
+  },
+  "empathy_and_understanding": {
+    "cluster_id": "ai_values:l1:a3ea51a4-60b7-4967-aca2-9c387c517a57",
+    "l1": "Empathy and understanding",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.753,
+    "model_name": "empathy_and_understanding"
+  },
+  "strategic_networking": {
+    "cluster_id": "ai_values:l1:cc127edf-d9b2-4bf9-b1e8-f5bad1675a9d",
+    "l1": "Strategic networking",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.003,
+    "model_name": "strategic_networking"
+  },
+  "collaboration": {
+    "cluster_id": "ai_values:l1:8f308b6b-c7ce-4079-ba0e-f3eb803093f4",
+    "l1": "Collaboration",
+    "l2": "Community and relationship bonds",
+    "l3": "Social values",
+    "freq": 0.892,
+    "model_name": "collaborative_partnership"
+  },
+  "self_and_other_acceptance": {
+    "cluster_id": "ai_values:l1:edc5c0f9-c271-46f9-b29c-175091cadf1b",
+    "l1": "Self and other acceptance",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.216,
+    "model_name": "self_other_acceptance"
+  },
+  "emotional_self_regulation": {
+    "cluster_id": "ai_values:l1:f4c81341-7f79-4071-b197-819a4c75f25b",
+    "l1": "Emotional self-regulation",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.128,
+    "model_name": "emotional_self_regulation"
+  },
+  "growth_oriented_learning": {
+    "cluster_id": "ai_values:l1:55631ee3-857b-4d98-8b0d-f51cdd525171",
+    "l1": "Growth-oriented learning",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.119,
+    "model_name": "growth_oriented_learning"
+  },
+  "psychological_and_emotional_wellbeing": {
+    "cluster_id": "ai_values:l1:222aba27-1d28-4116-a810-f8a0aef164ef",
+    "l1": "Psychological and emotional wellbeing",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.366,
+    "model_name": "psychological_emotional_wellbeing"
+  },
+  "individuality_and_personalization": {
+    "cluster_id": "ai_values:l1:378b2330-fa89-43fc-9d4e-96cf0ef9cfde",
+    "l1": "Individuality and personalization",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.099,
+    "model_name": "individuality_personalization"
+  },
+  "holistic_wellness": {
+    "cluster_id": "ai_values:l1:6f27c031-526a-4690-8af0-a44547092326",
+    "l1": "Holistic wellness",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.421,
+    "model_name": "holistic_wellness"
+  },
+  "autonomy": {
+    "cluster_id": "ai_values:l1:0190e026-cfac-484a-90ac-2ed35e8ae2d3",
+    "l1": "Autonomy",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 1.881,
+    "model_name": "supporting_self_determination"
+  },
+  "personal_growth": {
+    "cluster_id": "ai_values:l1:2c2001b7-9689-4192-9574-91497fd57fbd",
+    "l1": "Personal growth",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.707,
+    "model_name": "personal_growth"
+  },
+  "achievement_and_recognition": {
+    "cluster_id": "ai_values:l1:3051b148-d460-42a6-8984-a46c93a7b35a",
+    "l1": "Achievement and recognition",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.058,
+    "model_name": "achievement_recognition"
+  },
+  "balance_and_moderation": {
+    "cluster_id": "ai_values:l1:64691d12-3ca7-4ddb-ac68-6306db04960e",
+    "l1": "Balance and moderation",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.302,
+    "model_name": "balanced_simple_living"
+  },
+  "positive_future_outlook": {
+    "cluster_id": "ai_values:l1:f23e71a8-307b-4464-81ec-204b90c36f1c",
+    "l1": "Positive future outlook",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.134,
+    "model_name": "positive_future_outlook"
+  },
+  "physical_health_and_wellbeing": {
+    "cluster_id": "ai_values:l1:cd22bf10-21f0-46f1-9040-583d5398eb81",
+    "l1": "Physical health and wellbeing",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.226,
+    "model_name": "physical_wellbeing"
+  },
+  "mindful_awareness_and_presence": {
+    "cluster_id": "ai_values:l1:fab4fc63-4fa7-4de4-a308-8f13c9a47531",
+    "l1": "Mindful awareness and presence",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.107,
+    "model_name": "mindful_presence"
+  },
+  "psychological_depth_and_complexity": {
+    "cluster_id": "ai_values:l1:ef7a9c2b-d844-4b3a-94b0-6b2ff699fdf4",
+    "l1": "Psychological depth and complexity",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.1,
+    "model_name": "psychological_depth"
+  },
+  "fulfillment_through_meaningful_experiences": {
+    "cluster_id": "ai_values:l1:1e279937-ddfa-4f86-91c6-1df6ed5c1a79",
+    "l1": "Fulfillment through meaningful experiences",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.019,
+    "model_name": "fulfillment_through_experience"
+  },
+  "intellectual_autonomy_and_independence": {
+    "cluster_id": "ai_values:l1:922e8574-2e91-49a0-9d71-660eba69ed03",
+    "l1": "Intellectual autonomy and independence",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.036,
+    "model_name": "intellectual_independence"
+  },
+  "reflective_thinking": {
+    "cluster_id": "ai_values:l1:1b0cca39-7331-49da-9dcf-039d1ee1d1c5",
+    "l1": "Reflective thinking",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.165,
+    "model_name": "reflective_thinking"
+  },
+  "professional_growth_and_empowerment": {
+    "cluster_id": "ai_values:l1:a886db69-c718-497c-8331-5b5e23e1114b",
+    "l1": "Professional growth and empowerment",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.254,
+    "model_name": "professional_growth_empowerment"
+  },
+  "resilience_and_perseverance": {
+    "cluster_id": "ai_values:l1:a6648987-7d25-4b5e-abba-db2359370653",
+    "l1": "Resilience and perseverance",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.164,
+    "model_name": "resilience_perseverance"
+  },
+  "personal_accountability_and_responsibility": {
+    "cluster_id": "ai_values:l1:ff0d991f-edaa-4a12-b09e-6a5beb660711",
+    "l1": "Personal accountability and responsibility",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.059,
+    "model_name": "personal_accountability"
+  },
+  "self_awareness_and_self_regard": {
+    "cluster_id": "ai_values:l1:b96cc455-6704-4da6-9968-288c8e8510b5",
+    "l1": "Self-awareness and self-regard",
+    "l2": "Personal growth and wellbeing",
+    "l3": "Personal values",
+    "freq": 0.11,
+    "model_name": "self_awareness_and_regard"
+  },
+  "aesthetic_quality_and_harmony": {
+    "cluster_id": "ai_values:l1:a6eaa68c-5598-43eb-a9da-ff81ec9c3a34",
+    "l1": "Aesthetic quality and harmony",
+    "l2": "Artistic expression and appreciation",
+    "l3": "Personal values",
+    "freq": 0.077,
+    "model_name": "aesthetic_harmony"
+  },
+  "artistic_mastery": {
+    "cluster_id": "ai_values:l1:45a1d525-e875-45a5-ae85-f7e0b5040fae",
+    "l1": "Artistic mastery",
+    "l2": "Artistic expression and appreciation",
+    "l3": "Personal values",
+    "freq": 0.095,
+    "model_name": "artistic_mastery"
+  },
+  "artistic_expression": {
+    "cluster_id": "ai_values:l1:5f6a8e41-4094-4776-bff9-ddcc28802160",
+    "l1": "Artistic expression",
+    "l2": "Artistic expression and appreciation",
+    "l3": "Personal values",
+    "freq": 0.522,
+    "model_name": "artistic_expression"
+  },
+  "creative_freedom": {
+    "cluster_id": "ai_values:l1:282196d8-fe44-4387-8dba-881ac0dd22ab",
+    "l1": "Creative freedom",
+    "l2": "Artistic expression and appreciation",
+    "l3": "Personal values",
+    "freq": 0.187,
+    "model_name": "creative_freedom"
+  },
+  "narrative_immersion": {
+    "cluster_id": "ai_values:l1:3a2d3693-ff64-4dd7-bb80-2fe895c96db8",
+    "l1": "Narrative immersion",
+    "l2": "Artistic expression and appreciation",
+    "l3": "Personal values",
+    "freq": 0.035,
+    "model_name": "narrative_immersion"
+  },
+  "artistic_development": {
+    "cluster_id": "ai_values:l1:418ebb5e-bbaa-4c8c-9ec3-194e7fccf97b",
+    "l1": "Artistic development",
+    "l2": "Artistic expression and appreciation",
+    "l3": "Personal values",
+    "freq": 0.084,
+    "model_name": "artistic_development"
+  },
+  "aesthetic_appreciation": {
+    "cluster_id": "ai_values:l1:ddc06688-736b-45b6-bc57-d2fbcb017315",
+    "l1": "Aesthetic appreciation",
+    "l2": "Artistic expression and appreciation",
+    "l3": "Personal values",
+    "freq": 0.387,
+    "model_name": "aesthetic_sensitivity"
+  }
+}

@@ -1,0 +1,4 @@
+# .venvs/ws-train: trains the weight-steering LoRA adapters (not needed to consume them).
+# Separate from core because axolotl ==-pins torch/transformers/peft, and the
+# peft version fixes the adapter key layout cs_task_vectors.py reads.
+axolotl==0.8.0
