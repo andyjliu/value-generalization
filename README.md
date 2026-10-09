@@ -1,6 +1,6 @@
 # value-generalization
 
-This repository contains code and data associated with Predicting Alignment Generalization with Value Representations. It can be used to reproduce the paper's results, or to measure and predict value generalization (how steering a model toward one value changes its behavior on other values) over custom value sets and models.
+This repository contains code and data associated with [Predicting Alignment Generalization with Value Representations](https://arxiv.org/abs/2610.12410). It can be used to reproduce the paper's results, or to measure and predict value generalization (how steering a model toward one value changes its behavior on other values) over custom value sets and models.
 
 ## Setup
 
